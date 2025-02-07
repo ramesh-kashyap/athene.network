@@ -47,7 +47,8 @@ const Quest = () => {
         </div>
         <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
           <div className="flex items-center gap-3">
-            <Zap className="text-yellow-400 w-6 h-6" />
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
+            {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
             <div>
               <p className="text-white font-bold">Follow us on X</p>
               <p className="text-teal-300 text-sm">• New</p>
@@ -58,7 +59,8 @@ const Quest = () => {
 
         <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
           <div className="flex items-center gap-3">
-            <Zap className="text-yellow-400 w-6 h-6" />
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
+            {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
             <div>
               <p className="text-white font-bold">Join the Telegram channel</p>
               <p className="text-teal-300 text-sm">• New</p>
