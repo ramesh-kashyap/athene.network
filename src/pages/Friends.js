@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Friends = () => {
   return (
-    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
+    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center" >
       {/* Friends Section */}
-      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center">
+      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
         <h2 className="text-xl font-bold text-white mb-4">YOUR FRIENDS</h2>
         <div className="flex items-center justify-center gap-2 text-teal-400 text-3xl font-bold">
           0 <Globe className="w-8 h-8" />
-        </div>
+        </div>  
         <div className="flex justify-center mt-4">
         
             <Link to="/referral-list" className="flex flex-col items-center "> 
@@ -38,7 +38,7 @@ const Friends = () => {
 
 
       {/* Network Expansion Section */}
-      <div className="w-full max-w-md bg-[#121212] p-6 mt-6 rounded-lg border border-teal-500 text-center">
+      <div className="w-full max-w-md bg-[#121212] p-6 mt-6 rounded-lg border border-teal-500 text-center" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
         <h2 className="text-lg font-bold text-white mb-4">Expand your network now</h2>
         <div className="p-4 rounded-lg flex justify-center items-center">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x1A74f5d2D0209A1D9C58a70cc75d9CFC74E70fcC" alt="QR Code" className="w-32 h-32" />

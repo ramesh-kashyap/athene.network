@@ -40,7 +40,7 @@ const WalletUI = () => {
       <h1 className="text-3xl font-bold text-white mb-6 tracking-widest">WALLET</h1>
       
       {/* ATH Halving Countdown */}
-      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center shadow-md">
+      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center shadow-md" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
         <h2 className="text-sm text-gray-300 mb-4">ATH halving countdown</h2>
         <div className="flex justify-center gap-6 mt-2 text-teal-400">
           <div className="flex flex-col items-center">
@@ -65,49 +65,56 @@ const WalletUI = () => {
       {/* Wallet Actions */}
       <div className="grid grid-cols-3 gap-6 mt-8 text-center">
         <div className="flex flex-col items-center">
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/send.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Upload className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">Send</p>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/recived.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Download className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">Receive</p>
         </div>
         <div className="flex flex-col items-center">
         <Link to="/history" className="flex flex-col items-center "> 
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/history.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <History className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">History</p>
           </Link>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/deposit.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Globe className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">Deposit</p>
         </div>
         <div className="flex flex-col items-center">
             <Link to="/withdraw" className="flex flex-col items-center ">
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/withdraw.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Wallet className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">Withdraw</p>
           </Link>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-teal-500 p-5 rounded-full shadow-md">
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/gifts.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Gift className="text-white w-8 h-8" />
-          </div>
+          </div> */}
           <p className="text-sm mt-2 font-semibold text-gray-300">Airdrop</p>
         </div>
       </div>
       
       {/* Balance Section */}
-      <div className="w-full max-w-md bg-[#181818] p-6 mt-8 rounded-lg border border-teal-500 text-center shadow-md">
+      <div className="w-full max-w-md bg-[#181818] p-6 mt-8 rounded-lg border border-teal-500 text-center shadow-md" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
         <h2 className="text-lg font-bold text-white tracking-wide">BALANCE</h2>
         <div className="flex flex-col gap-4 mt-4 text-left">
           <div className="flex justify-between items-center border-b border-gray-700 pb-2">

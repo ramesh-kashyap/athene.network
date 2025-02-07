@@ -24,7 +24,7 @@ const Quest = () => {
             <CheckCircle className="w-4 h-4 text-teal-400" /> 0/1
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between">
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
           <div className="flex items-center gap-3">
             <CheckCircle className="text-teal-400 w-6 h-6" />
             <div>
@@ -45,7 +45,7 @@ const Quest = () => {
             <CheckCircle className="w-4 h-4 text-teal-400" /> 0/3
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between">
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
           <div className="flex items-center gap-3">
             <Zap className="text-yellow-400 w-6 h-6" />
             <div>
@@ -56,7 +56,7 @@ const Quest = () => {
           <p className="text-yellow-400 font-bold">+1,000,000 <GemIcon className="inline w-4 h-4" /></p>
         </div>
 
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between">
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
           <div className="flex items-center gap-3">
             <Zap className="text-yellow-400 w-6 h-6" />
             <div>
@@ -83,7 +83,7 @@ const Quest = () => {
           { title: "Top 1000 miners of the month", reward: "+30 TICKET" },
           { title: "KYC task", reward: "+500,000" },
         ].map((quest, index) => (
-          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between">
+          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
             <div className="flex items-center gap-3">
               <Star className="text-yellow-400 w-6 h-6" />
               <div>
