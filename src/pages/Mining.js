@@ -23,14 +23,16 @@ const [dots, setDots] = useState([]);
     const interval = setInterval(generateDots, 5000);
     return () => clearInterval(interval);
   }, []);
-  
+  const [activeTab, setActiveTab] = useState("tap");
+
+const tap = () => setActiveTab("tap");
+const node = () => setActiveTab("node");
   
 
 
   return (
     <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
       {/* Tabs Section */}
-
           {/* Background Blinking Dots */}
           {dots.map((dot, index) => (
         <div
@@ -40,18 +42,22 @@ const [dots, setDots] = useState([]);
         ></div>
       ))}
 
-
-
       <div className="flex w-full max-w-md justify-between bg-[#121212] p-2 rounded-lg border border-gray-700">
-        <div className="bg-teal-500 text-black px-6 py-3 rounded-lg font-bold flex-1 text-center cursor-pointer">TAP</div>
-        <div className="text-gray-400 px-6 py-3 rounded-lg font-bold flex-1 text-center cursor-pointer">YOUR NODE</div>
+        <div className={`px-6 py-3 rounded-lg font-bold flex-1 text-center cursor-pointer ${
+    activeTab === "tap" ? "bg-teal-500 text-black" : "text-gray-400"
+  }`} 
+  onClick={tap}>TAP</div>
+        <div className={`px-6 py-3 rounded-lg font-bold flex-1 text-center cursor-pointer ${
+    activeTab === "node" ? "bg-teal-500 text-black" : "text-gray-400"
+  }`} 
+  onClick={node}>YOUR NODE</div>
       </div>
       
       {/* GEM Earnings Section */}
-      <div className="bg-[#181818] p-6 mt-6 rounded-xl border border-teal-500 w-full max-w-md text-center" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+      <div className="bg-[#181818] p-6 mt-6 rounded-xl border border-teal-500 w-full max-w-md text-center" style={{background: "#000"}}>
         <p className="text-gray-400 text-sm">Total GEM earned from TAP</p>
         <div className="flex items-center justify-center mt-2 gap-2">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/diamond.gif" alt="setting" style={{height:'40px', width: 'auto',}}/>
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/gem.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
           {/* <ToggleLeft className="text-teal-400 w-8 h-8" /> */}
           {/* <Gem className="text-teal-400 w-8 h-8" /> */}
         </div>
@@ -71,7 +77,7 @@ const [dots, setDots] = useState([]);
       </div>
 
       {/* Level & Conversion Rate Section */}
-      <div className="flex justify-between w-full max-w-md mt-6 p-4 border border-teal-500 rounded-lg text-center" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+      <div className="flex justify-between w-full max-w-md mt-6 p-4 border border-teal-500 rounded-lg text-center" style={{background: "#000"}}>
         <div className="flex-1 border-r border-teal-500 p-4">
           <p className="text-gray-400 text-sm">Level</p>
           <p className="text-teal-300 text-3xl font-bold">29</p>
@@ -80,7 +86,7 @@ const [dots, setDots] = useState([]);
           <p className="text-gray-400 text-sm">Conversion Rate</p>
           <p className="text-teal-300 text-lg font-bold flex items-center justify-center">
             1 <span className="text-yellow-400 mx-1">&#11088;</span> ≈ 1.62 
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/diamond.gif" alt="setting" style={{height:'30px', width: 'auto',}}/>
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/gem.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
             {/* <Gem className="w-5 h-5 text-teal-400 ml-1" /> */}
           </p>
         </div>

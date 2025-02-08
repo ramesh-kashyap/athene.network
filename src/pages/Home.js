@@ -25,7 +25,7 @@ useEffect(() => {
 
 
   return (
-    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center" >
+    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
       {/* User Profile */}
 
        {/* Background Blinking Dots */}
@@ -47,9 +47,9 @@ useEffect(() => {
           </div>
         </div>
         <div className="flex gap-4">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/settingd.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/belli.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/gificon.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/settings.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/bells.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/Airdrop.png" alt="setting" style={{height:'35px', width: 'auto', marginTop:'-5px'}}/>
           {/* <Settings className="text-gray-300 cursor-pointer" /> */}
           {/* <Bell className="text-gray-300 cursor-pointer" />
           <Gift className="text-teal-300 cursor-pointer" /> */}
@@ -57,56 +57,56 @@ useEffect(() => {
       </div>
       
       {/* Giveaway Banner */}
-      <div className="w-full max-w-md  from-red-700 to-black p-4 rounded-xl text-center my-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
-        <h2 className="text-lg font-bold text-gray-100">10,000 ATH GIVEAWAY</h2>
+      <div className="w-full max-w-md  from-red-700 to-black p-4 rounded-xl text-center my-4 border border-teal-400" style={{ background: "#000" }}>
+        <h2 className="text-lg font-bold text-gray-100"><span style={{color:"	#FFD700"}}>10,000</span> ATH GIVEAWAY</h2>
         <p className="text-sm text-gray-300">Follow us on <span className="text-red-400">YouTube</span></p>
       </div>
       
       {/* Streak and Reward */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{background: "#000"}}>
         <div className="flex items-center gap-2">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/stars.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/wstar.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
           {/* <Star className="text-teal-300" /> */}
           <div>
             <p className="text-sm text-gray-300">Streak</p>
             <p className="text-lg font-bold text-white">0</p>
           </div>
         </div>
-        <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Receive 100</button>
+        <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Receive <span style={{color:"	#FFD700"}}>100</span></button>
       </div>
       
       {/* Quests Section */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
-      <img className="text-gray-300 cursor-pointer" src="../assets/img/tresure.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400" style={{background: "#000"}}>
+      <img className="text-gray-300 cursor-pointer" src="../assets/img/wtresure.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
         <p className="text-sm text-gray-300">Complete quests to earn more gems</p>
         <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Quest</button>
       </div>
       
       {/* Mining Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
         <h3 className="text-lg font-bold text-teal-300">MINING</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center"> */}
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/tap.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/wtap.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
             {/* </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">TAP</p>
           </div>
           <div className="flex flex-col items-center">
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Network className="text-white w-8 h-8" /> */}
-              <img className="text-gray-300 cursor-pointer" src="../assets/img/node.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+              <img className="text-gray-300 cursor-pointer" src="../assets/img/nodes.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
             {/* </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Node</p>
           </div>
           <div className="flex flex-col items-center">
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center"> */}
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/boost.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/boosts.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
             {/* </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Boost</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/Leaderboard.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/Leaderboards.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
 
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Trophy className="text-white w-8 h-8" />
@@ -116,32 +116,32 @@ useEffect(() => {
         </div>
       </div>
       {/* Community Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
         <h3 className="text-lg font-bold text-teal-300">COMMUNITY</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/Statistic.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/Statistics.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <BarChart className="text-white w-8 h-8" />
             </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Statistic</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/users.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/friend.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Users className="text-white w-8 h-8" />
             </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Friend</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/vote.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/votes.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Star className="text-white w-8 h-8" />
             </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Vote</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/telegram.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/telegrams.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Globe className="text-white w-8 h-8" />
             </div> */}
@@ -152,25 +152,25 @@ useEffect(() => {
 
        
       {/* Premium Privileges Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
         <h3 className="text-lg font-bold text-teal-300">PREMIUM PRIVILEGES</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/premium.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/premiums.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Crown className="text-white w-8 h-8" />
             </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">Premium</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/diamond.gif" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/gem.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Diamond className="text-white w-8 h-8" />
             </div> */}
             <p className="text-sm mt-1 font-semibold text-gray-300">PPick</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/referral.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/referrals.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
 
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Users className="text-white w-8 h-8" />
@@ -178,7 +178,7 @@ useEffect(() => {
             <p className="text-sm mt-1 font-semibold text-gray-300">Referral</p>
           </div>
           <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/revenew.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/revenues.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Banknote className="text-white w-8 h-8" />
             </div> */}

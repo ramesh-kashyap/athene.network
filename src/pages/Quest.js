@@ -21,10 +21,10 @@ const Quest = () => {
         <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
           <p>DAILY QUEST</p>
           <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" /> 0/1
+            <CheckCircle className="w-4 h-4 text-teal-400" /><span style={{color:"	#FFD700"}}> 0/1</span>
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
           <div className="flex items-center gap-3">
             {/* <CheckCircle className="text-teal-400 w-6 h-6" /> */}
             <img className="text-gray-300 cursor-pointer" src="../assets/img/check.gif" alt="setting" style={{height:'30px', width: 'auto',}}/>
@@ -33,7 +33,7 @@ const Quest = () => {
               <p className="text-teal-300 text-sm">• Claimable</p>
             </div>
           </div>
-          <p className="text-yellow-400 font-bold">+20,000 <GemIcon className="inline w-4 h-4" /></p>
+          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+20,000</span> <GemIcon className="inline w-4 h-4" /></p>
           <img className="text-gray-300 cursor-pointer" src="../assets/img/gift.gif" alt="setting" style={{height:'40px', width: 'auto',}}/>
 
           {/* <Gift className="text-gray-400 w-6 h-6" /> */}
@@ -45,31 +45,31 @@ const Quest = () => {
         <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
           <p>EVENT QUEST</p>
           <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" /> 0/3
+            <CheckCircle className="w-4 h-4 text-teal-400" /><span style={{color:"	#FFD700"}}> 0/3</span>
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
           <div className="flex items-center gap-3">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/light.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
             {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
             <div>
               <p className="text-white font-bold">Follow us on X</p>
               <p className="text-teal-300 text-sm">• New</p>
             </div>
           </div>
-          <p className="text-yellow-400 font-bold">+1,000,000 <GemIcon className="inline w-4 h-4" /></p>
+          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+1,000,000</span> <GemIcon className="inline w-4 h-4" /></p>
         </div>
 
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
           <div className="flex items-center gap-3">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/light.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
             {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
             <div>
               <p className="text-white font-bold">Join the Telegram channel</p>
               <p className="text-teal-300 text-sm">• New</p>
             </div>
           </div>
-          <p className="text-yellow-400 font-bold">+500,000 
+          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+500,000 </span>
             <GemIcon className="inline w-4 h-4" />
             </p>
         </div>
@@ -81,7 +81,8 @@ const Quest = () => {
           <p>ACHIEVEMENT QUEST</p>
           <div className="flex items-center gap-1 text-gray-400 text-sm">
             <CheckCircle className="w-4 h-4 text-teal-400" />
-             0/6
+            <span style={{color:"	#FFD700"}}>
+             0/6</span>
           </div>
         </div>
         {[
@@ -91,7 +92,7 @@ const Quest = () => {
           { title: "Top 1000 miners of the month", reward: "+30 TICKET" },
           { title: "KYC task", reward: "+500,000" },
         ].map((quest, index) => (
-          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #7660FF -10%,  #000 50%)" }}>
+          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
             <div className="flex items-center gap-3">
             <img className="text-gray-300 cursor-pointer" src="../assets/img/star.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
 
@@ -101,7 +102,7 @@ const Quest = () => {
                 <p className="text-red-400 text-sm">• Verifying</p>
               </div>
             </div>
-            <p className="text-yellow-400 font-bold">{quest.reward}</p>
+            <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>{quest.reward}</span></p>
             <ChevronRight className="text-gray-400 w-6 h-6" />
           </div>
         ))}

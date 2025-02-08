@@ -19,7 +19,8 @@ body {
 }
 .bg-teal-500 {
     --tw-bg-opacity: 1;
-    background-color: rgb(118, 96, 255);
+    background: linear-gradient(to bottom, #000 0%, #7660FF 113%);
+
 }
 .bg-teal-400 {
     --tw-bg-opacity: 1;
@@ -41,11 +42,12 @@ body {
 
 .bg-\[\#0d0d0d\] {
     --tw-bg-opacity: 1;
-    background: url(/public/assets/img/page_bg.png);
+    /* background: url(/public/assets/img/page_bg.png); */
+    background: linear-gradient(to right, #7660FF -74%,  #000 110%);
     max-width: 28rem;
     margin: 0px auto;
     background-position: initial;
-
+    margin-bottom: 40px;
 }
 .bg-gray-900 {
     --tw-bg-opacity: 1;

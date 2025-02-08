@@ -7,11 +7,11 @@ const Friends = () => {
   return (
     <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center" >
       {/* Friends Section */}
-      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center" style={{background: "#000"}}>
         <h2 className="text-xl font-bold text-white mb-4">YOUR FRIENDS</h2>
         <div className="flex items-center justify-center gap-2 text-teal-400 text-3xl font-bold">
           0 
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/globe.gif" alt="setting" style={{height:'30px', width: 'auto'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/globs.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
           {/* <Globe className="w-8 h-8"/> */}
         </div>  
         <div className="flex justify-center mt-4">
@@ -34,14 +34,14 @@ const Friends = () => {
         </div>
       </div>
       <div className="mt-6 flex items-center gap-2 text-gray-300 text-sm">
-      <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+      <img className="text-gray-300 cursor-pointer" src="../assets/img/light.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
         {/* <Zap className="text-teal-400 w-6 h-6" /> */}
         <p>Maximize your data network: More nodes, faster mining!</p>
       </div>
 
 
       {/* Network Expansion Section */}
-      <div className="w-full max-w-md bg-[#121212] p-6 mt-6 rounded-lg border border-teal-500 text-center" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md bg-[#121212] p-6 mt-6 rounded-lg border border-teal-500 text-center" style={{background: "#000"}}>
         <h2 className="text-lg font-bold text-white mb-4">Expand your network now</h2>
         <div className="p-4 rounded-lg flex justify-center items-center">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x1A74f5d2D0209A1D9C58a70cc75d9CFC74E70fcC" alt="QR Code" className="w-32 h-32" />
@@ -52,13 +52,13 @@ const Friends = () => {
         </div>
         <div className="flex justify-between mt-6">
           <div className="w-1/2 p-4 bg-[#181818] rounded-lg text-center flex flex-col items-center cursor-pointer border border-teal-500">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/users.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/friend.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
 
             {/* <Users className="text-teal-400 w-8 h-8" /> */}
             <p className="text-white text-sm font-bold mt-2">Join the Athene Community</p>
           </div>
           <div className="w-1/2 p-4 bg-[#181818] rounded-lg text-center flex flex-col items-center cursor-pointer border border-teal-500">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/send.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/sends.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
             {/* <Send className="text-teal-400 w-8 h-8" /> */}
             <p className="text-white text-sm font-bold mt-2">Invite friends to get huge rewards</p>
           </div>
