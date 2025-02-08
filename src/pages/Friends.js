@@ -10,7 +10,9 @@ const Friends = () => {
       <div className="w-full max-w-md bg-[#121212] p-6 rounded-lg border border-teal-500 text-center" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
         <h2 className="text-xl font-bold text-white mb-4">YOUR FRIENDS</h2>
         <div className="flex items-center justify-center gap-2 text-teal-400 text-3xl font-bold">
-          0 <Globe className="w-8 h-8" />
+          0 
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/globe.gif" alt="setting" style={{height:'30px', width: 'auto'}}/>
+          {/* <Globe className="w-8 h-8"/> */}
         </div>  
         <div className="flex justify-center mt-4">
         
@@ -32,7 +34,8 @@ const Friends = () => {
         </div>
       </div>
       <div className="mt-6 flex items-center gap-2 text-gray-300 text-sm">
-        <Zap className="text-teal-400 w-6 h-6" />
+      <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+        {/* <Zap className="text-teal-400 w-6 h-6" /> */}
         <p>Maximize your data network: More nodes, faster mining!</p>
       </div>
 
@@ -49,11 +52,14 @@ const Friends = () => {
         </div>
         <div className="flex justify-between mt-6">
           <div className="w-1/2 p-4 bg-[#181818] rounded-lg text-center flex flex-col items-center cursor-pointer border border-teal-500">
-            <Users className="text-teal-400 w-8 h-8" />
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/users.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+
+            {/* <Users className="text-teal-400 w-8 h-8" /> */}
             <p className="text-white text-sm font-bold mt-2">Join the Athene Community</p>
           </div>
           <div className="w-1/2 p-4 bg-[#181818] rounded-lg text-center flex flex-col items-center cursor-pointer border border-teal-500">
-            <Send className="text-teal-400 w-8 h-8" />
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/send.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
+            {/* <Send className="text-teal-400 w-8 h-8" /> */}
             <p className="text-white text-sm font-bold mt-2">Invite friends to get huge rewards</p>
           </div>
         </div>

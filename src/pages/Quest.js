@@ -24,16 +24,19 @@ const Quest = () => {
             <CheckCircle className="w-4 h-4 text-teal-400" /> 0/1
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
           <div className="flex items-center gap-3">
-            <CheckCircle className="text-teal-400 w-6 h-6" />
+            {/* <CheckCircle className="text-teal-400 w-6 h-6" /> */}
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/check.gif" alt="setting" style={{height:'30px', width: 'auto',}}/>
             <div>
               <p className="text-white font-bold">Daily check-in</p>
               <p className="text-teal-300 text-sm">• Claimable</p>
             </div>
           </div>
           <p className="text-yellow-400 font-bold">+20,000 <GemIcon className="inline w-4 h-4" /></p>
-          <Gift className="text-gray-400 w-6 h-6" />
+          <img className="text-gray-300 cursor-pointer" src="../assets/img/gift.gif" alt="setting" style={{height:'40px', width: 'auto',}}/>
+
+          {/* <Gift className="text-gray-400 w-6 h-6" /> */}
         </div>
       </div>
 
@@ -45,7 +48,7 @@ const Quest = () => {
             <CheckCircle className="w-4 h-4 text-teal-400" /> 0/3
           </div>
         </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
           <div className="flex items-center gap-3">
           <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
             {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
@@ -57,7 +60,7 @@ const Quest = () => {
           <p className="text-yellow-400 font-bold">+1,000,000 <GemIcon className="inline w-4 h-4" /></p>
         </div>
 
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
           <div className="flex items-center gap-3">
           <img className="text-gray-300 cursor-pointer" src="../assets/img/flash.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
             {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
@@ -66,7 +69,9 @@ const Quest = () => {
               <p className="text-teal-300 text-sm">• New</p>
             </div>
           </div>
-          <p className="text-yellow-400 font-bold">+500,000 <GemIcon className="inline w-4 h-4" /></p>
+          <p className="text-yellow-400 font-bold">+500,000 
+            <GemIcon className="inline w-4 h-4" />
+            </p>
         </div>
       </div>
 
@@ -75,7 +80,8 @@ const Quest = () => {
         <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
           <p>ACHIEVEMENT QUEST</p>
           <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" /> 0/6
+            <CheckCircle className="w-4 h-4 text-teal-400" />
+             0/6
           </div>
         </div>
         {[
@@ -85,9 +91,11 @@ const Quest = () => {
           { title: "Top 1000 miners of the month", reward: "+30 TICKET" },
           { title: "KYC task", reward: "+500,000" },
         ].map((quest, index) => (
-          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{ backgroundImage: "linear-gradient(to bottom, #7660FF -10%,  #000 50%)" }}>
             <div className="flex items-center gap-3">
-              <Star className="text-yellow-400 w-6 h-6" />
+            <img className="text-gray-300 cursor-pointer" src="../assets/img/star.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+
+              {/* <Star className="text-yellow-400 w-6 h-6" /> */}
               <div>
                 <p className="text-white font-bold">{quest.title}</p>
                 <p className="text-red-400 text-sm">• Verifying</p>

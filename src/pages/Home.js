@@ -57,13 +57,13 @@ useEffect(() => {
       </div>
       
       {/* Giveaway Banner */}
-      <div className="w-full max-w-md  from-red-700 to-black p-4 rounded-xl text-center my-4 border border-teal-400" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md  from-red-700 to-black p-4 rounded-xl text-center my-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
         <h2 className="text-lg font-bold text-gray-100">10,000 ATH GIVEAWAY</h2>
         <p className="text-sm text-gray-300">Follow us on <span className="text-red-400">YouTube</span></p>
       </div>
       
       {/* Streak and Reward */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
         <div className="flex items-center gap-2">
         <img className="text-gray-300 cursor-pointer" src="../assets/img/stars.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
           {/* <Star className="text-teal-300" /> */}
@@ -76,14 +76,14 @@ useEffect(() => {
       </div>
       
       {/* Quests Section */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400" style={{ backgroundImage: "radial-gradient(#000 5%, #7660FF 5%,  #000 30%)" }}>
+      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
       <img className="text-gray-300 cursor-pointer" src="../assets/img/tresure.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
         <p className="text-sm text-gray-300">Complete quests to earn more gems</p>
         <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Quest</button>
       </div>
       
       {/* Mining Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
         <h3 className="text-lg font-bold text-teal-300">MINING</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
@@ -116,7 +116,7 @@ useEffect(() => {
         </div>
       </div>
       {/* Community Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
         <h3 className="text-lg font-bold text-teal-300">COMMUNITY</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
@@ -152,7 +152,7 @@ useEffect(() => {
 
        
       {/* Premium Privileges Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "radial-gradient(#000 2%, #7660FF 5%,  #000 20%)" }}>
+      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{ backgroundImage: "linear-gradient(to bottom, #000 35%,  #7660FF 180%)" }}>
         <h3 className="text-lg font-bold text-teal-300">PREMIUM PRIVILEGES</h3>
         <div className="grid grid-cols-4 gap-4 mt-4 text-center">
           <div className="flex flex-col items-center">
