@@ -10,19 +10,19 @@ const [dots, setDots] = useState([]);
     setGemCount(gemCount + 1);
   };
 
-  useEffect(() => {
-    const generateDots = () => {
-      const newDots = Array.from({ length: 10 }).map(() => ({
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-      }));
-      setDots(newDots);
-    };
-    generateDots();
-    const interval = setInterval(generateDots, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const generateDots = () => {
+  //     const newDots = Array.from({ length: 10 }).map(() => ({
+  //       left: `${Math.random() * 100}%`,
+  //       top: `${Math.random() * 100}%`,
+  //       animationDelay: `${Math.random() * 5}s`,
+  //     }));
+  //     setDots(newDots);
+  //   };
+  //   generateDots();
+  //   const interval = setInterval(generateDots, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
   const [activeTab, setActiveTab] = useState("tap");
 
 const tap = () => setActiveTab("tap");

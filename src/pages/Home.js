@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Settings, Bell, Gift, Star, Zap, Network, Flame, Trophy,BarChart,Users,Globe ,Crown,Diamond,Banknote} from "lucide-react";
 import Footer from '../components/Footer';
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
 
-
+const navigate = useNavigate();
 const [dots, setDots] = useState([]);
 
-useEffect(() => {
-  const generateDots = () => {
-    const newDots = Array.from({ length: 10 }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      animationDelay: `${Math.random() * 5}s`,
-    }));
-    setDots(newDots);
-  };
-  generateDots();
-  const interval = setInterval(generateDots, 5000);
-  return () => clearInterval(interval);
-}, []);
-
-
+// useEffect(() => {
+//   const generateDots = () => {
+//     const newDots = Array.from({ length: 10 }).map(() => ({
+//       left: `${Math.random() * 100}%`,
+//       top: `${Math.random() * 100}%`,
+//       animationDelay: `${Math.random() * 5}s`,
+//     }));
+//     setDots(newDots);
+//   };
+//   generateDots();
+//   const interval = setInterval(generateDots, 5000);
+//   return () => clearInterval(interval);
+// }, []);
 
 
   return (
@@ -111,7 +110,7 @@ useEffect(() => {
             {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
               <Trophy className="text-white w-8 h-8" />
             </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Leaderboard</p>
+            <p className="text-sm mt-1 font-semibold text-gray-300" onClick={()=>navigate("/leaderboard")}>Leaderboard</p>
           </div>
         </div>
       </div>

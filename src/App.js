@@ -10,8 +10,9 @@ import Friends from "./pages/Friends";
 import WithdrawPage from "./pages/Withdraw";
 import HistoryPage from "./pages/History";
 import ReferralList from "./pages/ReferralList";
-
-
+import Leaderboard from "./pages/LeaderBoard";
+import Send from "./pages/Send";
+import Deposit from "./pages/wallet/deposit"
 const App = () => {
   return (
     <Router>
@@ -24,7 +25,10 @@ const App = () => {
         <Route path="/friends" element={<Friends />} />
         <Route path="/withdraw" element={<WithdrawPage />} />
         <Route path="/history" element={<HistoryPage />} />
+        <Route path="/send" element={<Send />}/>
         <Route path="/referral-list" element={<ReferralList />} />
+        <Route path="/leaderboard" element={<Leaderboard/>}/>
+        <Route path="/deposit" element={<Deposit/>}/>
       </Routes>
    
   </Router>

@@ -102,3 +102,140 @@ select.w-full.bg-\[\#121212\].p-4.rounded-lg.border.border-teal-500.text-white.a
     background: transparent;
     border: 1px solid;
 }
+
+
+
+
+
+.leaderboard {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+}
+
+.leaderboard-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    background: linear-gradient(to right, #27ffb1, #00c2ff);
+    padding: 8px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.inactive {
+    background: #222;
+    color: #777;
+}
+
+.date-range {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.top-three {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.rank {
+    width: 80px;
+    text-align: center;
+    position: relative;
+}
+
+.rank img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #00ffcc;
+}
+
+.rank .badge {
+    background: gold;
+    color: #060d17;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rank.gold { background: gold; }
+.rank.silver { background: silver; }
+.rank.bronze { background: #c96; }
+
+.podium {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.podium div {
+    background: #122233;
+    color: white;
+    padding: 10px;
+    width: 80px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+}
+
+.podium div:nth-child(1) { height: 70px; }
+.podium div:nth-child(2) { height: 100px; }
+.podium div:nth-child(3) { height: 60px; }
+
+.list {
+    background: #0e1b2b;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #222;
+}
+
+.player img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status {
+    background: #0f1724;
+    padding: 10px;
+    border-radius: 10px;
+    color: #00ffcc;
+    text-align: center;
+    margin-top: 10px;
+}

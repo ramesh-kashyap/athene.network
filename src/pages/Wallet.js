@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Upload, Download, History, Globe, Send, Wallet, Gift } from "lucide-react";
 import Footer from '../components/Footer';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
 const WalletUI = () => {
-  
+  const navigate = useNavigate();
   const [dots, setDots] = useState([]);
   
-  useEffect(() => {
-    const generateDots = () => {
-      const newDots = Array.from({ length: 10 }).map(() => ({
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-      }));
-      setDots(newDots);
-    };
-    generateDots();
-    const interval = setInterval(generateDots, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const generateDots = () => {
+  //     const newDots = Array.from({ length: 10 }).map(() => ({
+  //       left: `${Math.random() * 100}%`,
+  //       top: `${Math.random() * 100}%`,
+  //       animationDelay: `${Math.random() * 5}s`,
+  //     }));
+  //     setDots(newDots);
+  //   };
+  //   generateDots();
+  //   const interval = setInterval(generateDots, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
   
 
 
@@ -88,7 +88,7 @@ const WalletUI = () => {
           <p className="text-sm mt-2 font-semibold text-gray-300">History</p>
           </Link>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={()=>navigate('/Deposit')}>
         <img className="text-gray-300 cursor-pointer" src="../assets/img/4.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
           {/* <div className="bg-teal-500 p-5 rounded-full shadow-md">
             <Globe className="text-white w-8 h-8" />
