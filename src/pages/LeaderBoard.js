@@ -53,7 +53,7 @@ const Leaderboard = () => {
                 className="w-12 h-12 rounded-full border-4 border-500" style={{marginLeft:20}}
               /> 
             <img
-                src="../assets/top2.c6654c9f.svg"
+                src="../assets/top2.png"
                 alt="User avatar"
               /> 
             <p className="text-center mt-2" style={{marginTop:-70}}>8723B</p>
@@ -66,8 +66,8 @@ const Leaderboard = () => {
                 className="w-12 h-12 rounded-full border-4 border-500" style={{marginLeft:40}}
               /> 
             <img
-                src="../assets/top1.297d9975.svg"
-                alt="User avatar"
+                src="../assets/top.png"
+                alt="User avatar" style={{height:328, width:710}}
               /> 
             <p className="text-center mt-2" style={{marginTop:-70}}>8723B</p>
             <p className="text-center">"sun***"</p>
@@ -79,7 +79,7 @@ const Leaderboard = () => {
                 className="w-12 h-12 rounded-full border-4 border-500" style={{marginLeft:20}}
               /> 
             <img
-                src="../assets/top3.a7a6f45d.svg"
+                src="../assets/top3.png"
                 alt="User avatar"
               /> 
             <p className="text-center mt-2" style={{marginTop:-70}}>8723B</p>

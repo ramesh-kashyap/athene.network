@@ -12,7 +12,9 @@ import HistoryPage from "./pages/History";
 import ReferralList from "./pages/ReferralList";
 import Leaderboard from "./pages/LeaderBoard";
 import Send from "./pages/Send";
-import Deposit from "./pages/wallet/deposit"
+import Deposit from "./pages/wallet/deposit";
+import TapAirdrop from "./pages/TapAirdrop";
+import DailyBoost from "./pages/DailyBoost"
 const App = () => {
   return (
     <Router>
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/referral-list" element={<ReferralList />} />
         <Route path="/leaderboard" element={<Leaderboard/>}/>
         <Route path="/deposit" element={<Deposit/>}/>
+        <Route path="/tapairdrop" element={<TapAirdrop/>}/>
+        <Route path="/dailyboost" element={<DailyBoost/>}/>
       </Routes>
    
   </Router>

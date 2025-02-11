@@ -1,48 +1,77 @@
 import React, { useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Bell } from "lucide-react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-
+import Footer from '../components/Footer';
 const ReferralList = () => {
-  const [activeTab, setActiveTab] = useState("direct");
+  // const [activeTab, setActiveTab] = useState("direct");
+  const [activeTab, setActiveTab] = useState("community");
+  const tasks = [
+    { id: 1, name: "Register Klink Account", reward: "500,000", icon: "/images/klink.png" },
+    { id: 2, name: "Learn More About Klink", reward: "10,000", icon: "/images/youtube.png" },
+  ];
 
+  const communityTasks = [
+    { id: 3, name: "Join TG Community", reward: "10,000", icon: "/images/telegram.png" },
+    { id: 4, name: "Join Klink TG Chat", reward: "10,000", icon: "/images/telegram-blue.png" },
+    { id: 5, name: "Join Klink on X", reward: "10,000", icon: "/images/x.png" },
+    { id: 6, name: "Complete Klink tasks on Zealy", reward: "10,000", icon: "/images/zealy.png" },
+    { id: 7, name: "Join Klink on Discord", reward: "10,000", icon: "/images/discord.png" },
+  ];
   return (
-    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
-      {/* Header */}
-      <div className="w-full max-w-md flex items-center py-4 relative">
-          <Link to="/friends" className="flex flex-col items-center "> 
-        <button className="bg-[#121212] p-3 rounded-lg bg-teal-500">
-          <ArrowLeft className="text-teal-400 w-6 h-6" />
-        </button>
-    </Link>
-        <h1 className="text-3xl font-bold text-white tracking-widest text-center flex-1">LIST</h1>
+    <div 
+      className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center relative"
+      style={{
+        background: "linear-gradient(144deg,#9c78ed -2.15%,rgba(156,120,237,0) 93.61%)",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}
+    >
+      <div className="w-full max-w-md flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-white">Register Klink Account</h1>
+        <div className="relative">
+          <Bell className="text-white w-6 h-6" />
+          <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
+        </div>
       </div>
       
-      {/* Referral Tabs */}
-      <div className="w-full max-w-md flex justify-between border-b border-teal-400 pb-2">
-        <button
-          className={`text-center w-1/2 pb-2 ${activeTab === "direct" ? "border-b-2 border-teal-400 text-teal-400" : "text-gray-400"}`}
-          onClick={() => setActiveTab("direct")}
-        >
-          <p className="font-semibold">Direct Referral</p>
-          <p className="text-lg">( 1 )</p>
-        </button>
-        <button
-          className={`text-center w-1/2 pb-2 ${activeTab === "indirect" ? "border-b-2 border-teal-400 text-teal-400" : "text-gray-400"}`}
-          onClick={() => setActiveTab("indirect")}
-        >
-          <p className="font-semibold">Indirect Referral</p>
-          <p className="text-lg">( 0 )</p>
-        </button>
+      <div className="w-full max-w-md space-y-4">
+        {tasks.map(task => (
+          <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
+            <div className="flex items-center gap-3">
+              <img src={task.icon} alt={task.name} className="w-12 h-12" />
+              <div>
+                <p className="text-white font-bold">{task.name}</p>
+                <p className="text-gray-400 text-sm">{task.reward}</p>
+              </div>
+            </div>
+            <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+          </div>
+        ))}
       </div>
       
-      {/* Referral List */}
-      <div className="w-full max-w-md mt-4 text-gray-300 text-lg text-left">
-        {activeTab === "direct" ? (
-          <p>devinmega@telegram.org</p>
-        ) : (
-          <p className="text-gray-500 text-center">No indirect referrals</p>
-        )}
+      <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400">
+        <button className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
+        <button className="text-gray-500">Social Tasks <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
+        <button className="text-gray-500">Partners <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button>
       </div>
+      
+      {activeTab === "community" && (
+        <div className="w-full max-w-md space-y-4 mt-4">
+          {communityTasks.map(task => (
+            <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
+              <div className="flex items-center gap-3">
+                <img src={task.icon} alt={task.name} className="w-12 h-12" />
+                <div>
+                  <p className="text-white font-bold">{task.name}</p>
+                  <p className="text-gray-400 text-sm">{task.reward}</p>
+                </div>
+              </div>
+              <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+            </div>
+          ))}
+        </div>
+      )}
+      <Footer/>
     </div>
   );
 };

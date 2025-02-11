@@ -1,118 +1,75 @@
-import React from "react";
+import React ,{useState} from "react";
 import { ChevronRight, CheckCircle, Zap, Gift,Star, Gem as GemIcon } from "lucide-react";
 import Footer from '../components/Footer';
 
 const Quest = () => {
+  const [activeTab, setActiveTab] = useState("community");
+
+const tasks = [
+  { id: 1, name: "Register Klink Account", reward: "500,000", icon: "../assets/klink3.svg" },
+  { id: 2, name: "Learn More About Klink", reward: "10,000", icon: "../assets/klink7.svg" },
+];
+
+const communityTasks = [
+  { id: 3, name: "Join TG Community", reward: "10,000", icon: "../assets/klink6.svg" },
+  { id: 4, name: "Join Klink TG Chat", reward: "10,000", icon: "../assets/klink8.svg" },
+  { id: 5, name: "Join Klink on X", reward: "10,000", icon: "../assets/klink9.svg" },
+  { id: 6, name: "Complete Klink tasks on Zealy", reward: "10,000", icon: "../assets/klink10.svg" },
+  { id: 7, name: "Join Klink on Discord", reward: "10,000", icon: "../assets/klink7.svg" },
+  { id: 8, name: "Join Klink on Insta", reward: "10,000", icon: "../assets/klink11.svg" },
+];
   return (
-    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
-      {/* Quest Header */}
-      <h1 className="text-2xl font-bold text-white mb-4">QUEST</h1>
+    <div 
+      className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center relative" >
       
-      {/* Sponsored Section */}
-      <div className="w-full max-w-md bg-[#121212] p-4 rounded-lg border border-teal-500 flex items-center justify-between">
-        <div>
-          <p className="text-teal-400 font-bold text-sm">COMPLETE SPONSORED QUESTS FOR UNLIMITED REWARDS</p>
+      <div className="w-full max-w-md flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-white">Register Klink Account</h1>
+        <div className="relative">
+          {/* <Bell className="text-white w-6 h-6" /> */}
+          <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
         </div>
-        <button className="bg-teal-500 text-black px-4 py-2 rounded-lg font-bold">Go <ChevronRight className="inline w-4 h-4" /></button>
       </div>
       
-      {/* Daily Quest Section */}
-      <div className="w-full max-w-md mt-6">
-        <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
-          <p>DAILY QUEST</p>
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" /><span style={{color:"	#FFD700"}}> 0/1</span>
-          </div>
-        </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
-          <div className="flex items-center gap-3">
-            {/* <CheckCircle className="text-teal-400 w-6 h-6" /> */}
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/check.gif" alt="setting" style={{height:'30px', width: 'auto',}}/>
-            <div>
-              <p className="text-white font-bold">Daily check-in</p>
-              <p className="text-teal-300 text-sm">• Claimable</p>
-            </div>
-          </div>
-          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+20,000</span> <GemIcon className="inline w-4 h-4" /></p>
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/gift.gif" alt="setting" style={{height:'40px', width: 'auto',}}/>
-
-          {/* <Gift className="text-gray-400 w-6 h-6" /> */}
-        </div>
-      </div>
-
-      {/* Event Quest Section */}
-      <div className="w-full max-w-md mt-6">
-        <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
-          <p>EVENT QUEST</p>
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" /><span style={{color:"	#FFD700"}}> 0/3</span>
-          </div>
-        </div>
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
-          <div className="flex items-center gap-3">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/light.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
-            {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
-            <div>
-              <p className="text-white font-bold">Follow us on X</p>
-              <p className="text-teal-300 text-sm">• New</p>
-            </div>
-          </div>
-          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+1,000,000</span> <GemIcon className="inline w-4 h-4" /></p>
-        </div>
-
-        <div className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
-          <div className="flex items-center gap-3">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/light.png" alt="setting" style={{height:'30px', width: 'auto',}}/>
-            {/* <Zap className="text-yellow-400 w-6 h-6" /> */}
-            <div>
-              <p className="text-white font-bold">Join the Telegram channel</p>
-              <p className="text-teal-300 text-sm">• New</p>
-            </div>
-          </div>
-          <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>+500,000 </span>
-            <GemIcon className="inline w-4 h-4" />
-            </p>
-        </div>
-      </div>
-
-        {/* Achievement Quest Section */}
-        <div className="w-full max-w-md mt-6">
-        <div className="flex justify-between items-center text-teal-400 font-bold border-b border-teal-500 pb-2">
-          <p>ACHIEVEMENT QUEST</p>
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <CheckCircle className="w-4 h-4 text-teal-400" />
-            <span style={{color:"	#FFD700"}}>
-             0/6</span>
-          </div>
-        </div>
-        {[
-          { title: "Direct introduction", reward: "+25% Booster" },
-          { title: "Indirect introduction", reward: "+15% Booster" },
-          { title: "Milestone task", reward: "+10% Booster" },
-          { title: "Top 1000 miners of the month", reward: "+30 TICKET" },
-          { title: "KYC task", reward: "+500,000" },
-        ].map((quest, index) => (
-          <div key={index} className="bg-[#181818] p-4 mt-2 rounded-lg border border-teal-500 flex items-center justify-between" style={{background: "#000"}}>
+      <div className="w-full max-w-md space-y-4">
+        {tasks.map(task => (
+          <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
             <div className="flex items-center gap-3">
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/star.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-
-              {/* <Star className="text-yellow-400 w-6 h-6" /> */}
+              <img src={task.icon} alt={task.name} className="w-12 h-12" />
               <div>
-                <p className="text-white font-bold">{quest.title}</p>
-                <p className="text-red-400 text-sm">• Verifying</p>
+                <p className="text-white font-bold">{task.name}</p>
+                <p className="text-gray-400 text-sm">{task.reward}</p>
               </div>
             </div>
-            <p className="text-yellow-400 font-bold"><span style={{color:"	#FFD700"}}>{quest.reward}</span></p>
-            <ChevronRight className="text-gray-400 w-6 h-6" />
+            <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
           </div>
         ))}
       </div>
+      
+      <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400">
+        <button className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
+        <button className={`relative text-white font-bold pb-2 ${activeTab === "socialtask" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("socialtask")}>Social Task<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
+        <button className={`relative text-white font-bold pb-2 ${activeTab === "partners" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("partners")}>Partners<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button>
 
-
-      <br></br>
-      <br></br>
-         {/* Footer Navigation */}
-         <Footer />
+        {/* <button className="text-gray-500">Partners <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button> */}
+      </div>
+      
+      {activeTab === "community" && (
+        <div className="w-full max-w-md space-y-4 mt-4">
+          {communityTasks.map(task => (
+            <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
+              <div className="flex items-center gap-3">
+                <img src={task.icon} alt={task.name} className="w-12 h-12" />
+                <div>
+                  <p className="text-white font-bold">{task.name}</p>
+                  <p className="text-gray-400 text-sm">{task.reward}</p>
+                </div>
+              </div>
+              <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+            </div>
+          ))}
+        </div>
+      )}
+      <Footer/>
     </div>
   );
 };

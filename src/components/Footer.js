@@ -8,47 +8,28 @@ import {
 const Footer = () => {
   return (
        <>
-        <div className="fixed bottom-0 w-full max-w-md bg-[#121212] p-4 flex justify-around border-t border-gray-700 footer">
-        <div className="flex flex-col items-center">
-        <Link to="/" className="flex flex-col items-center ">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/home.png" alt="setting" style={{height:'25px', width: 'auto',}}/>
-          {/* <Home className="w-6 h-6" /> */}
-          <p className="text-xs">Home</p>
-        </Link>
-        </div>
-       
-        <div className="flex flex-col items-center text-gray-300">
-        <Link to="/wallet" className="flex flex-col items-center ">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/wallet.png" alt="setting" style={{height:'25px', width: 'auto',}}/>
-          {/* <Wallet className="w-6 h-6" /> */}
-          <p className="text-xs">Wallet</p>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center text-gray-300">
-        <Link to="/mining" className="flex flex-col items-center ">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/mining.png" alt="setting" style={{height:'25px', width: 'auto',}}/>
-
-          {/* <Rocket className="w-6 h-6" /> */}
-          <p className="text-xs">Mining</p>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center text-gray-300">
-        <Link to="/quest" className="flex flex-col items-center ">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/diamonds.png" alt="setting" style={{height:'25px', width: 'auto',}}/>
-
-          {/* <BarChart className="w-6 h-6" /> */}
-          <p className="text-xs">Quest</p>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center text-gray-300">
-        <Link to="/friends" className="flex flex-col items-center ">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/users.png" alt="setting" style={{height:'25px', width: 'auto',}}/>
-
-          {/* <Users className="w-6 h-6" /> */}
-          <p className="text-xs">Friend</p>
-          </Link>
-        </div>
-      </div>
+        <div className="fixed bottom-0 w-full max-w-md bg-[#1C1A3A] p-4 flex justify-around border-t border-gray-700 mt-6 rounded-t-xl">
+<Link to="/" className="flex flex-col items-center text-[#7D5FFF]">
+  <img src="../assets/click20.svg" alt="Ref" className="w-6 h-6" />
+  <p className="text-xs">Ref</p>
+</Link>
+<Link to="/wallet" className="flex flex-col items-center text-gray-300">
+  <img src="../assets/klink21.svg" alt="Task" className="w-6 h-6" />
+  <p className="text-xs">Airdrop</p>
+</Link>
+<Link to="/mining" className="flex flex-col items-center text-gray-300">
+  <img src="../assets/klink24.svg" alt="Tap" className="w-6 h-6" />
+  <p className="text-xs">Tap</p>
+</Link>
+<Link to="/quest" className="flex flex-col items-center text-gray-300">
+  <img src="../assets/click23.svg" alt="Airdrop" className="w-6 h-6" />
+  <p className="text-xs">Task</p>
+</Link>
+<Link to="/friends" className="flex flex-col items-center text-gray-300">
+  <img src="../assets/klink22.svg" alt="Stats" className="w-6 h-6" />
+  <p className="text-xs">Stats</p>
+</Link>
+</div>
       <style>{`
         @keyframes blink {
           0% { opacity: 0.1; }

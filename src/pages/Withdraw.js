@@ -47,7 +47,7 @@ const WithdrawPage = () => {
               <p className="text-gray-400 text-sm">Choose an asset</p>
               <div className="relative mt-2">
                   <select
-                      className="w-full bg-[#121212] p-4 rounded-lg border border-teal-500 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full p-4 rounded-lg border border-teal-500 text-white appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500"  style={{ background: "#000" }}
                       value={selectedAsset}
                       onChange={(e) => setSelectedAsset(e.target.value)}
                   >
@@ -64,7 +64,7 @@ const WithdrawPage = () => {
                   <p className="text-gray-400 text-sm">Amount</p>
                   <p className="text-gray-400 text-sm">Balance: 0</p>
               </div>
-              <div className="flex items-center justify-between bg-[#121212] p-4 rounded-lg border border-teal-500 mt-2">
+              <div className="flex items-center justify-between  p-4 rounded-lg border border-teal-500 mt-2"  style={{ background: "#000" }}>
                   <input type="number" placeholder="Amount" className="bg-transparent outline-none text-white w-full" />
                   <button className="text-teal-400 font-semibold">MAX</button>
               </div>
@@ -73,7 +73,7 @@ const WithdrawPage = () => {
           {/* Wallet Address Input */}
           <div className="w-full max-w-md mt-6">
               <p className="text-gray-400 text-sm">Wallet address</p>
-              <div className="flex items-center justify-between bg-[#121212] p-4 rounded-lg border border-teal-500 mt-2">
+              <div className="flex items-center justify-between p-4 rounded-lg border border-teal-500 mt-2"  style={{ background: "#000" }}>
                   <input type="text" placeholder="Wallet address" className="bg-transparent outline-none text-white w-full" />
                   <QrCode className="text-teal-400 w-6 h-6 cursor-pointer" />
               </div>
@@ -84,7 +84,7 @@ const WithdrawPage = () => {
               <p className="text-gray-400 text-sm">Network</p>
               <div className="relative mt-2">
                   <select
-                      className="w-full bg-[#121212] p-4 rounded-lg border border-teal-500  text-white appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full  p-4 rounded-lg border border-teal-500  text-white appearance-none focus:outline-none focus:ring-2 focus:ring-teal-500"  style={{ background: "#000" }}
                       value={selectedNetwork}
                       onChange={(e) => setSelectedNetwork(e.target.value)}
                   >
