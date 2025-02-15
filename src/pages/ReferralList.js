@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { ArrowLeft, Bell } from "lucide-react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Footer from '../components/Footer';
 const ReferralList = () => {
+  const navigate = useNavigate();
   // const [activeTab, setActiveTab] = useState("direct");
   const [activeTab, setActiveTab] = useState("community");
   const tasks = [

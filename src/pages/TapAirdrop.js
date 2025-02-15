@@ -39,7 +39,7 @@ const TapAirdrop = () => {
 
       <div className="relative flex items-center justify-center mt-10">
         <button onClick={handlePrev} className="absolute left-0 p-3">
-          {/* <ChevronLeft className="text-white w-8 h-8" /> */}
+          <ChevronLeft className="text-white w-8 h-8" />
         </button>
         <img
           src={leagues[currentIndex].image}
@@ -47,7 +47,7 @@ const TapAirdrop = () => {
           className="w-60 h-60 animate-pulse"
         />
         <button onClick={handleNext} className="absolute right-0 p-3">
-          {/* <ChevronRight className="text-white w-8 h-8" /> */}
+          <ChevronRight className="text-white w-8 h-8" />
         </button>
       </div>
 

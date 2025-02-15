@@ -1,10 +1,10 @@
 import React ,{useState} from "react";
 import { ChevronRight, CheckCircle, Zap, Gift,Star, Gem as GemIcon } from "lucide-react";
 import Footer from '../components/Footer';
-
+import {useNavigate} from "react-router-dom";
 const Quest = () => {
   const [activeTab, setActiveTab] = useState("community");
-
+  const navigate = useNavigate();
 const tasks = [
   { id: 1, name: "Register Klink Account", reward: "500,000", icon: "../assets/klink3.svg" },
   { id: 2, name: "Learn More About Klink", reward: "10,000", icon: "../assets/klink7.svg" },

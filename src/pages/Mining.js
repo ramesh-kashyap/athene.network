@@ -80,7 +80,7 @@ const node = () => setActiveTab("node");
             <img src="../assets/klink2.svg" alt="coin" className="w-5 h-5" /> 500 / 500
           </p>
           <button className="flex items-center px-3 py-1 rounded-lg text-black text-sm gap-2 items-center">
-            <img src="../assets/klink3.svg" alt="booster" className="w-5 h-5 mr-1" /> Boosters
+            <img src="../assets/klink13.svg" alt="booster" className="w-5 h-5 mr-1" /> Boosters
           </button>
         </div>
         <div className="w-full bg-gray-700 h-3 rounded-lg mt-2">

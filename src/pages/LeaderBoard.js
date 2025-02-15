@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Footer from '../components/Footer';
+import {useNavigate} from "react-router-dom";
 const Leaderboard = () => {
   const [selectedTab, setSelectedTab] = useState("week");
   const [activeTab, setActiveTab] = useState("tap");
-  
+  const navigate = useNavigate();
   const tap = () => setActiveTab("tap");
   const node = () => setActiveTab("node");
 

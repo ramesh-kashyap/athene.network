@@ -14,7 +14,10 @@ import Leaderboard from "./pages/LeaderBoard";
 import Send from "./pages/Send";
 import Deposit from "./pages/wallet/deposit";
 import TapAirdrop from "./pages/TapAirdrop";
-import DailyBoost from "./pages/DailyBoost"
+import DailyBoost from "./pages/DailyBoost";
+import SignupPage from "./pages/Signup";
+import ActivityDashboard from "./pages/Activity";
+import { Activity } from "lucide-react";
 const App = () => {
   return (
     <Router>
@@ -33,6 +36,8 @@ const App = () => {
         <Route path="/deposit" element={<Deposit/>}/>
         <Route path="/tapairdrop" element={<TapAirdrop/>}/>
         <Route path="/dailyboost" element={<DailyBoost/>}/>
+        <Route path="/signup" element={<SignupPage/>}/>
+        <Route path="/activity" element={<ActivityDashboard/>}/>
       </Routes>
    
   </Router>

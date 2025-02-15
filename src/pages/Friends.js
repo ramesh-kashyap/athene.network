@@ -1,9 +1,10 @@
 import React from "react";
 import { Globe, ExternalLink, Zap, Users, Send, Clipboard } from "lucide-react";
 import Footer from '../components/Footer';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Friends = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center relative">
       <div className="w-full max-w-md flex justify-between items-center mb-6">
