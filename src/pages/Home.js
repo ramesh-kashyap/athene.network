@@ -95,7 +95,7 @@ const [dots, setDots] = useState([]);
         <div className="flex items-center gap-3">
           <div className="bg-teal-400 w-12 h-12 rounded-full flex items-center justify-center text-black text-lg font-bold">R</div>
           <div>
-            <h2 className="text-xl font-bold text-white">Ramesh</h2>
+            <h2 className="text-xl font-bold text-white">Sachin</h2>
             <p className="text-sm text-teal-300">Level 29</p>
           </div>
         </div>
