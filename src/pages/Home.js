@@ -2,11 +2,65 @@ import React, { useState, useEffect } from "react";
 import { Settings, Bell, Gift, Star, Zap, Network, Flame, Trophy,BarChart,Users,Globe ,Crown,Diamond,Banknote} from "lucide-react";
 import Footer from '../components/Footer';
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import Api from '../Api/botService';
 
 const Home = () => {
+  const [userData, setUserData] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+
+  useEffect(() => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const user = window.Telegram.WebApp.initDataUnsafe?.user;
+      if (user) {
+        console.log("User detected:", user);
+        handleAuthentication(user);
+      } else {
+        alert("This app must be opened from the Telegram mobile app.");
+      }
+    } else {
+      alert("Not running in Telegram mobile app environment.");
+    }
+  }, []);
+
+  const handleAuthentication = async (user) => {
+    try {
+      const response = await Api.post("/register", {
+        id: user.id,
+        // first_name: user.first_name,
+        first_name: "sach",
+        username: user.username,
+      });
+
+      if (response.data.success) {
+        setUserData(user);
+        setIsLoggedIn(true);
+      } else {
+        alert("Authentication failed.");
+      }
+    } catch (error) {
+      console.error("Error during authentication:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (loading) {
+      setUserData("sachin");
+      setLoading(false); // Avoid infinite loop
+    }
+  }, [loading]);
 const navigate = useNavigate();
 const [dots, setDots] = useState([]);
+
+         
+
+
+
+
+
 
 // useEffect(() => {
 //   const generateDots = () => {
@@ -64,7 +118,7 @@ const [dots, setDots] = useState([]);
       {/* Streak and Reward */}
       <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{background: "#000"}}>
         <div className="flex items-center gap-2">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/wstar.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
+        <img className="text-gray-300 cursor-pointer" src="../assets/img/wstar.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}} onClick={handleAuthentication}/>
           {/* <Star className="text-teal-300" /> */}
           <div>
             <p className="text-sm text-gray-300">Streak</p>

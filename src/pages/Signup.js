@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
+import Api from '../Api/botService';
 const SignupPage = () => {
-  const [activeTab, setActiveTab] = useState("connect");
+  const [activeTab, setActiveTab] = useState("signup");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   return (
@@ -32,7 +33,7 @@ const SignupPage = () => {
           Connect Account
         </button>
       </div>
-      {activeTab === "signup" && (
+      {activeTab === "connect" && (
         <>
         <div className="text-center mt-8 px-4">
           <h1 className="text-2xl font-bold">Use the Email Linked to Your Klink Account</h1>
@@ -67,7 +68,7 @@ const SignupPage = () => {
               ✕
             </button>
             <div className="flex justify-center mb-4">
-              <img src="/images/account-connected.png" alt="Account Connected" className="w-24 h-24" />
+              <img src="../assets/klink32.svg" alt="Account Connected" className="w-24 h-24" />
             </div>
             <h2 className="text-2xl font-bold">Account Connected</h2>
             <p className="text-gray-400 mt-2">Click below to be redirected to your Klink app</p>
@@ -80,7 +81,7 @@ const SignupPage = () => {
           </div>
         </div>
       )}
-       {activeTab ==="connect" &&(
+       {activeTab ==="signup" &&(
        <div      className="min-h-screen flex flex-col items-center px-6 py-8 text-white relative font-sans"
        style={{
          background:
@@ -95,21 +96,21 @@ const SignupPage = () => {
  
        <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl p-6 mt-8 shadow-lg">
          <div className="flex gap-3 items-start border-b border-gray-700 pb-4 mb-4">
-           <img src="/images/klink-icon.png" alt="download" className="w-10 h-10" />
+           <img src="../assets/klink32.svg" alt="download" className="w-10 h-10" />
            <div>
              <p className="text-white font-bold">Download Klink:</p>
              <p className="text-gray-300 text-sm">from the app store (click “Download Klink” below to be re-directed.)</p>
            </div>
          </div>
          <div className="flex gap-3 items-start border-b border-gray-700 pb-4 mb-4">
-           <img src="/images/signup-icon.png" alt="signup" className="w-10 h-10" />
+           <img src="../assets/klink33.svg" alt="signup" className="w-10 h-10" />
            <div>
              <p className="text-white font-bold">Complete Sign Up:</p>
              <p className="text-gray-300 text-sm">Create your account in minutes.</p>
            </div>
          </div>
          <div className="flex gap-3 items-start">
-           <img src="/images/email-icon.png" alt="connect" className="w-10 h-10" />
+           <img src="../assets/klink34.svg" alt="connect" className="w-10 h-10" />
            <div>
              <p className="text-white font-bold">Connect Email:</p>
              <p className="text-gray-300 text-sm">Come back to this page and connect your Klink email to finish task.</p>
@@ -119,7 +120,7 @@ const SignupPage = () => {
  
        <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl p-6 mt-8 flex justify-between items-center shadow-lg">
          <div className="flex gap-3 items-center">
-           <img src="/images/reward-icon.png" alt="reward" className="w-10 h-10" />
+           <img src="../assets/klink35.svg" alt="reward" className="w-10 h-10" />
            <div>
              <p className="text-white font-bold">Sign up Reward</p>
              <p className="text-yellow-500 font-bold">500,000</p>

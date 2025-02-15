@@ -14,9 +14,9 @@ const ActivityDashboard = () => {
       }}
     >
 
-      <div className="w-full max-w-md flex justify-between bg-gray-900 rounded-full p-2 text-lg font-semibold" style={{fontSize:15}}>
+      <div className="w-full max-w-md flex justify-between bg-gray-900 rounded-full p-2 text-lg font-semibold">
         <button
-          className={`w-1/2 text-center py-2 rounded-full ${
+          className={`w-1/2 text-center  rounded-full ${
             activeTab === "myActivity" ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400"
           }`}
           onClick={() => setActiveTab("myActivity")}
@@ -24,7 +24,7 @@ const ActivityDashboard = () => {
           MY ACTIVITY
         </button>
         <button
-          className={`w-1/2 text-center py-2 rounded-full ${
+          className={`w-1/2 text-center  rounded-full ${
             activeTab === "community" ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400"
           }`}
           onClick={() => setActiveTab("community")}

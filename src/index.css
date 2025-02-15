@@ -51,7 +51,8 @@ body {
 }
 .bg-gray-900 {
     --tw-bg-opacity: 1;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: #7660ff29;
 }
 .border-gray-700 {
     --tw-border-opacity: 1;
@@ -238,4 +239,27 @@ select.w-full.bg-\[\#121212\].p-4.rounded-lg.border.border-teal-500.text-white.a
     color: #00ffcc;
     text-align: center;
     margin-top: 10px;
+}
+
+
+.text-center.py-2.rounded-full{
+    font-size: smaller;
+}
+.text-5xl{
+    font-size: 20px;
+}
+.py-2{
+    /* padding-top:4px */
+}
+.w-10{
+    width: 1.5rem;
+}
+.p-3{
+    padding:1px
+}
+.text-lg{
+    font-size: 13px;
+}
+.w-12{
+     width:30px
 }

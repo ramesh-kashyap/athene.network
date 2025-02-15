@@ -61,7 +61,7 @@ const node = () => setActiveTab("node");
       </div>
       <div className="text-center text-white mt-10">
         <p className="text-lg" styele={{fontSize:7}}>Tap Points</p>
-        <h1 className="text-5xl font-bold flex items-center justify-center gap-2" style={{ fontSize: "2.5rem" }}
+        <h1 className="text-5xl font-bold flex items-center justify-center gap-2"
         >
           <img src="../assets/klink2.svg" alt="coin" className="w-8 h-8" />
           1,087

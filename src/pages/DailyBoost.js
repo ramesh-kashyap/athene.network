@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
 const dailyRewards = [
@@ -20,12 +20,17 @@ const dailyRewards = [
   { day: 16, amount: 140000 , multiplier: "" }
 ];
 
+
 const DailyBoost = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("dailyBoost");
   const [faqOpen, setFaqOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-
+  
+//    useEffect =()=>{
+//    setIsModalOpen(true);
+// }
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -54,15 +59,15 @@ const DailyBoost = () => {
       >
         <div className="w-full max-w-md flex justify-between bg-gray-900 rounded-full p-2 text-lg font-semibold">
           <button
-            className={`w-1/2 text-center py-2 rounded-full ${
+            className={`w-1/2 text-center  rounded-full ${
               activeTab === "mining" ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400"
             }`}
-            onClick={() => setActiveTab("mining")}
+            onClick={() => setActiveTab("mining")} style={{paddingTop:1}}
           >
             Mining
           </button>
           <button
-            className={`w-1/2 text-center py-2 rounded-full ${
+            className={`w-1/2 text-center  rounded-full ${
               activeTab === "dailyBoost" ? "bg-purple-600 text-white" : "bg-gray-800 text-gray-400"
             }`}
             onClick={() => setActiveTab("dailyBoost")}
@@ -81,9 +86,9 @@ const DailyBoost = () => {
             <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500 shadow-lg">
               <div className="flex items-center gap-2">
                 <img src="../assets/klink2.svg" alt="klink" className="w-10 h-10" />
-                <span className="text-gray-300 mt-2">Connect your Klink Account</span>
+                <span className="text-gray-300">Connect your Klink Account</span>
               </div>
-              <button className="bg-yellow-500 text-black px-6 py-2 rounded-lg shadow-md" onClick={()=>navigate('/signup')}>CONNECT</button>
+              <button className="bg-yellow-500 text-black px-6  rounded-lg shadow-md" onClick={()=>navigate('/signup')}>CONNECT</button>
             </div>
 
             <div className="grid grid-cols-4 gap-4 mt-8">
@@ -112,15 +117,15 @@ const DailyBoost = () => {
         {activeTab === "mining" && (
           <div
             className="min-h-screen flex flex-col items-center p-6 text-white"
-            style={{
-              background: "radial-gradient(circle at center, rgba(124, 77, 255, 0.6), rgba(17, 10, 29, 1))",
-              backgroundSize: "cover",
-            }}
+            // style={{
+            //   background: "radial-gradient(circle at center, rgba(124, 77, 255, 0.6), rgba(17, 10, 29, 1))",
+            //   backgroundSize: "cover",
+            // }}
           >
             <div className="max-w-md bg-gray-800 rounded-lg mt-4 flex justify-between">
             <img src="../assets/click23.svg" alt="tasks" className="w-5 h-5 m-2" />
               <span className="text-gray-300 m-2" style={{fontSize:'10px'}}>1/25 Tasks Complete</span>
-              <span><span className="bg-yellow-500 px-2 py-2 rounded text-black"  style={{fontSize:'10px'}}>X1.00</span> <span style={{fontSize:'10px'}}>Multiplier</span></span>
+              <span><span className="bg-yellow-500 px-2  rounded text-black"  style={{fontSize:'10px'}}>X1.00</span> <span style={{fontSize:'10px'}}>Multiplier</span></span>
               <img src="../assets/klink4.svg" alt="tasks" className="w-5 h-5 m-2" />
               <span  className="text-gray-300 m-2" style={{fontSize:'10px'}}>Disconnected</span>
             </div>
@@ -138,7 +143,7 @@ const DailyBoost = () => {
                 <img src="../assets/klink3.svg" alt="klink" className="w-8 h-8" />
                 <span className="text-lg">Connect your Klink Account</span>
               </div>
-              <button className="bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold">Connect</button>
+              <button className="bg-yellow-500 text-black px-4  rounded-lg font-bold">Connect</button>
             </div>
 
             <div className="w-full max-w-md bg-gray-900 rounded-lg p-3 mt-6 flex justify-between items-center border border-yellow-500">
@@ -151,26 +156,13 @@ const DailyBoost = () => {
 
             <div className="w-full max-w-md mt-8">
               <h2 className="text-xl font-bold">FAQ</h2>
-              <div
-                className="bg-gray-800 p-4 rounded-lg mt-2 cursor-pointer"
-                onClick={() => setFaqOpen(!faqOpen)}
-              >
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold">What is Klink Finance?</span>
-                  {faqOpen ? "−" : "+"}
-                </div>
-                {faqOpen && (
-                  <p className="text-gray-300 mt-2">
-                    Klink is a multi-service quest and investment platform designed to help you grow your crypto wealth. Connect this Mini App to your main Klink wallet to convert points into $KLINK tokens at TGE.
-                  </p>
-                )}
-              </div>
+              
 
               <div className="mt-2">
                 {faqItems.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-gray-900 p-4 rounded-lg mt-2 cursor-pointer text-white"
+                    className={`${openIndex ===index ?'bg-gray-800':'bg-gray-900'} p-4 rounded-lg mt-2 cursor-pointer text-white`}
                     onClick={() => toggleFAQ(index)}
                   >
                     <div className="flex justify-between items-center">
@@ -186,6 +178,26 @@ const DailyBoost = () => {
             </div>
           </div>
         )}
+        {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
+            <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
+              ✕
+            </button>
+            <div className="flex justify-center mb-4">
+              <img src="../assets/klink37.svg" alt="Account Connected" className="w-24 h-24" />
+            </div>
+            <h2 className="text-2xl font-bold">Daily Reward</h2>
+            <p className="text-gray-400 mt-2">Your Daily Reward is ready. connect your klink account to start making profit!</p>
+            <button
+              className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
+              onClick={() => navigate('/signup')}
+            >
+              Claim
+            </button>
+          </div>
+        </div>
+      )}
         <Footer />
       </div>
     </>

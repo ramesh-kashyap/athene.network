@@ -3,6 +3,7 @@ import { ChevronRight, CheckCircle, Zap, Gift,Star, Gem as GemIcon } from "lucid
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
 const Quest = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("community");
   const navigate = useNavigate();
 const tasks = [
@@ -20,19 +21,19 @@ const communityTasks = [
 ];
   return (
     <div 
-      className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center relative" >
+      className="bg-[#0d0d0d] text-gray-200 min-h-screen p-2 font-sans flex flex-col items-center relative" >
       
       <div className="w-full max-w-md flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-white">Register Klink Account</h1>
-        <div className="relative">
-          {/* <Bell className="text-white w-6 h-6" /> */}
+        <div className="relative" onClick={() => setIsModalOpen(true)}>
+        <img src="../assets/klink4.svg" alt="Invite Friend" className="text-white w-6 h-6" />
           <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
         </div>
       </div>
       
       <div className="w-full max-w-md space-y-4">
         {tasks.map(task => (
-          <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
+          <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
             <div className="flex items-center gap-3">
               <img src={task.icon} alt={task.name} className="w-12 h-12" />
               <div>
@@ -56,7 +57,7 @@ const communityTasks = [
       {activeTab === "community" && (
         <div className="w-full max-w-md space-y-4 mt-4">
           {communityTasks.map(task => (
-            <div key={task.id} className="bg-[#1C1A3A] p-4 rounded-xl flex items-center justify-between border border-gray-700">
+            <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
               <div className="flex items-center gap-3">
                 <img src={task.icon} alt={task.name} className="w-12 h-12" />
                 <div>
@@ -67,6 +68,26 @@ const communityTasks = [
               <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
             </div>
           ))}
+        </div>
+      )}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
+            <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
+              ✕
+            </button>
+            <div className="flex justify-center mb-4">
+              <img src="../assets/klink36.svg" alt="Account Connected" className="w-24 h-24" />
+            </div>
+            <h2 className="text-2xl font-bold">Connected Klink Wallet</h2>
+            <p className="text-gray-400 mt-2">Signup and connect your Klink Wallet to start redeeming rewards directly to your account.</p>
+            <button
+              className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
+              onClick={() => navigate('/signup')}
+            >
+              Signup to Klink
+            </button>
+          </div>
         </div>
       )}
       <Footer/>
