@@ -3,33 +3,51 @@ import { Settings, Bell, Gift, Star, Zap, Network, Flame, Trophy,BarChart,Users,
 import Footer from '../components/Footer';
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import Api from '../Api/botService';
-
+import Loader from "../components/Loader"; 
 const Home = () => {
   const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
+    const [token, setToken] = useState(localStorage.getItem("token"));
+    const [telegram_id, setTelegramId] = useState(localStorage.getItem("telegram_id"));
+    const [username, setUsername] = useState("Guest");
+    const [name, setName] = useState("ABC");
+    const [user, setUser] = useState(null);
 
-
-  useEffect(() => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      const user = window.Telegram.WebApp.initDataUnsafe?.user;
-      if (user) {
-        console.log("User detected:", user);
-        handleAuthentication(user);
-      } else {
-        alert("This app must be opened from the Telegram mobile app.");
+  
+    // Check if the Telegram WebApp SDK is available
+    const tg = window.Telegram;
+    console.log(tg);  
+    useEffect(() => {
+      if (!window.Telegram || !window.Telegram.WebApp) {
+        console.error("❌ Telegram WebApp SDK is missing.");
+        setLoading(false); // Stop loading if the SDK is missing
+        return;
       }
-    } else {
-      alert("Not running in Telegram mobile app environment.");
-    }
-  }, []);
-
+      const tg = window.Telegram.WebApp;
+      tg.expand(); // Expand the WebApp interface
+      const initDataUnsafe = tg.initDataUnsafe;
+      if (initDataUnsafe && initDataUnsafe.user) {
+        setUser(initDataUnsafe.user);
+        setTelegramId(initDataUnsafe.user.id);
+        setUsername(initDataUnsafe.user.username);
+        setName(initDataUnsafe.user.first_name);
+        localStorage.setItem("telegram_id", initDataUnsafe.user.id); // Store telegram_id locally
+      }
+      setLoading(false); // Ensure loading is stopped after initialization
+    }, []);
+  
+    useEffect(() => {
+      if (telegram_id) {
+        handleAuthentication(telegram_id);
+      }
+    }, [telegram_id]);
+  console.log(user);  
   const handleAuthentication = async (user) => {
     try {
       const response = await Api.post("/register", {
         id: user.id,
-        // first_name: user.first_name,
-        first_name: "sach",
+        first_name: user.first_name,
         username: user.username,
       });
 
@@ -95,7 +113,7 @@ const [dots, setDots] = useState([]);
         <div className="flex items-center gap-3">
           <div className="bg-teal-400 w-12 h-12 rounded-full flex items-center justify-center text-black text-lg font-bold">R</div>
           <div>
-            <h2 className="text-xl font-bold text-white">Ramesh</h2>
+            <h2 className="text-xl font-bold text-white">{name}</h2>
             <p className="text-sm text-teal-300">Level 29</p>
           </div>
         </div>
