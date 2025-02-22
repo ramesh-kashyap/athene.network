@@ -16,7 +16,7 @@ import DailyBoost from "./pages/DailyBoost";
 import SignupPage from "./pages/Signup";
 import ActivityDashboard from "./pages/Activity";
 import Loader from "./components/Loader"; // Create a loader component
-
+import Api from "./Api/botService";
 const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,37 +27,41 @@ const App = () => {
 
   // Check if the Telegram WebApp SDK is available
   const tg = window.Telegram;
-  console.log(tg);  
+  // console.log(tg);  
   useEffect(() => {
     if (!window.Telegram || !window.Telegram.WebApp) {
       console.error("❌ Telegram WebApp SDK is missing.");
-      setLoading(false); // Stop loading if the SDK is missing
+      // setLoading(false); // Stop loading if the SDK is missing
       return;
     }
     const tg = window.Telegram.WebApp;
-    tg.expand(); // Expand the WebApp interface
+    tg.expand(); // Expand the WebApp interface 
     const initDataUnsafe = tg.initDataUnsafe;
     if (initDataUnsafe && initDataUnsafe.user) {
       setUser(initDataUnsafe.user);
       setTelegramId(initDataUnsafe.user.id);
       localStorage.setItem("telegram_id", initDataUnsafe.user.id); // Store telegram_id locally
     }
-    setLoading(false); // Ensure loading is stopped after initialization
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // Ensure loading is stopped after initialization
+    return () => clearTimeout(timer);
   }, []);
 
-
-  
   // Fetch user info if the user is logged in
-  const fetchUserInfo = async (telegramId) => {
-    if (!telegramId) return;
-
+  const fetchUserInfo = async (user) => {
+    console.log(telegram_id);
     try {
-      const response = await fetch(`/api/user-info?telegram_id=${telegramId}`);
-      const data = await response.json();
-      if (response.ok) {
-        setUser(data.user);
+      const response = await Api.post("auth/telegram-login",{
+        telegram_id :telegram_id,        
+      });
+      console.log("Response:", response);
+      // const data = await response.json();      
+      if (response.data.token) {
+        console.log(token);
+        setToken(response.data.token);  // Ensure setToken() is defined in your code
       } else {
-        console.error("Failed to fetch user info:", data.message);
+        console.error("Failed to fetch user info:", response);
       }
     } catch (error) {
       console.error("Error fetching user info:", error);

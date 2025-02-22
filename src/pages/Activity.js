@@ -35,7 +35,7 @@ const ActivityDashboard = () => {
       {activeTab === "myActivity" &&(
         <>
         <div className="w-full max-w-md bg-red-700 rounded-lg p-1 mt-4 flex items-center gap-3 shadow-lg">
-        <span className="text-lg font-semibold"style={{fontSize:15}}>❌ Klink account is not connected</span>
+        <span className="text-lg font-semibold"style={{fontSize:15}}>❌ AiCoinX account is not connected</span>
       </div>
 
       <div className="text-center mt-8">

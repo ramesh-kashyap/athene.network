@@ -36,16 +36,16 @@ const DailyBoost = () => {
   };
 
   const faqItems = [
-    { question: "What are $KLINK Points?", answer: "$KLINK Points are earned through mining and completing tasks. They can be converted into $KLINK tokens at the TGE." },
+    { question: "What are $AiCoinX Points?", answer: "$KLINK Points are earned through mining and completing tasks. They can be converted into $KLINK tokens at the TGE." },
     { question: "What Are Tap Points?", answer: "Tap Points are earned by engaging with the platform and can be used to boost your earnings." },
-    { question: "When Will Klink Airdrop Happen?", answer: "The Klink airdrop will take place at the Token Generation Event (TGE)." },
+    { question: "When Will AiCoinX Airdrop Happen?", answer: "The Klink airdrop will take place at the Token Generation Event (TGE)." },
     { question: "Are There Other Ways I Can Earn?", answer: "Yes! You can earn through referrals, completing tasks, and participating in promotions." },
-    { question: "What is $KLINK Mining?", answer: "$KLINK Mining allows users to earn $KLINK Points over time by engaging with the ecosystem." },
+    { question: "What is $AiCoinX Mining?", answer: "$AiCoinX Mining allows users to earn $AiCoinX Points over time by engaging with the ecosystem." },
     { question: "How Can I Start Mining Points?", answer: "Simply connect your Klink account and start participating in mining activities." },
     { question: "What Are Daily Multipliers?", answer: "Daily multipliers help boost your earnings based on your engagement level." },
     { question: "Will Airdrop Rewards Have Vesting?", answer: "Yes, some airdrop rewards may be subject to a vesting schedule." },
     { question: "How Will I Claim Airdrop Rewards?", answer: "Airdrop rewards can be claimed through the Klink wallet once the TGE occurs." },
-    { question: "Is Klink Available in All Countries?", answer: "Klink is available in most countries, but some regions may have restrictions." }
+    { question: "Is AiCoinX Available in All Countries?", answer: "Klink is available in most countries, but some regions may have restrictions." }
   ];
 
   return (

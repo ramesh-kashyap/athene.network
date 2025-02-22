@@ -8,16 +8,17 @@ const Home = () => {
   const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true); 
-    const [token, setToken] = useState(localStorage.getItem("token"));
+    // const [token, setToken] = useState(localStorage.setItem("token"));
     const [telegram_id, setTelegramId] = useState(localStorage.getItem("telegram_id"));
     const [username, setUsername] = useState("Guest");
     const [name, setName] = useState("ABC");
+    const [lname, setLast] = useState("XYZ");
     const [user, setUser] = useState(null);
-
-  
     // Check if the Telegram WebApp SDK is available
     const tg = window.Telegram;
     console.log(tg);  
+    // console.log("Token from localStorage:", localStorage.getItem("token"));
+
     useEffect(() => {
       if (!window.Telegram || !window.Telegram.WebApp) {
         console.error("❌ Telegram WebApp SDK is missing.");
@@ -25,60 +26,72 @@ const Home = () => {
         return;
       }
       const tg = window.Telegram.WebApp;
-      tg.expand(); // Expand the WebApp interface
+      tg.expand(); // Expand the WebApp interface 
       const initDataUnsafe = tg.initDataUnsafe;
       if (initDataUnsafe && initDataUnsafe.user) {
         setUser(initDataUnsafe.user);
         setTelegramId(initDataUnsafe.user.id);
         setUsername(initDataUnsafe.user.username);
         setName(initDataUnsafe.user.first_name);
+        setLast(initDataUnsafe.user.last_name);
         localStorage.setItem("telegram_id", initDataUnsafe.user.id); // Store telegram_id locally
+        if (telegram_id) {
+                handleAuthentication(telegram_id);
+              }
       }
       setLoading(false); // Ensure loading is stopped after initialization
     }, []);
   
-    useEffect(() => {
-      if (telegram_id) {
-        handleAuthentication(telegram_id);
-      }
-    }, [telegram_id]);
-  console.log(user);  
+  //   useEffect(() => {
+  //     if (telegram_id) {
+  //       handleAuthentication(telegram_id);
+  //     }
+  //   }, [telegram_id]);
+  // console.log(user);  
+  // const handleAuthentication = async (user) => {
+  //   try {
+  //     const response = await Api.post("/register", {
+  //       id: user.id,
+  //       first_name: user.first_name,
+  //       username: user.username,
+  //     });
+  //     console.log(response);
+  //     if (response.data.success) {
+  //       setUserData(user);
+  //       setIsLoggedIn(true);
+  //     } else {
+  //       alert("Authentication failed.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during authentication:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+    
   const handleAuthentication = async (user) => {
-    try {
-      const response = await Api.post("/register", {
-        id: user.id,
-        first_name: user.first_name,
-        username: user.username,
-      });
-
-      if (response.data.success) {
-        setUserData(user);
-        setIsLoggedIn(true);
-      } else {
-        alert("Authentication failed.");
-      }
-    } catch (error) {
-      console.error("Error during authentication:", error);
-    } finally {
-      setLoading(false);
-    }
+    try{
+    const response = await Api.post("auth/telegram-login", {
+      telegram_id: telegram_id,
+      tname: name,
+      tusername: username,
+      tlastname: lname,
+    });
+    console.log("Response:", response);
+  }
+  catch(error){
+    console.error("Error during authentication:", error);
+  }
   };
-
-  useEffect(() => {
+  
+  useEffect(() => {    
     if (loading) {
-      setUserData("sachin");
+      setUserData("ABC");
       setLoading(false); // Avoid infinite loop
     }
   }, [loading]);
 const navigate = useNavigate();
 const [dots, setDots] = useState([]);
-
-         
-
-
-
-
-
 
 // useEffect(() => {
 //   const generateDots = () => {
