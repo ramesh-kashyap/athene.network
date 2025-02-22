@@ -47,7 +47,7 @@ const SignupPage = () => {
           <span className="text-purple-400 text-lg">📧</span>
           <input
             type="email"
-            placeholder="Enter Your Klink E-mail Here"
+            placeholder="Enter Your AiCoinX E-mail Here"
             className="w-full bg-transparent text-white text-lg px-3 focus:outline-none"
           />
         </div>
@@ -129,7 +129,7 @@ const SignupPage = () => {
        </div>
  
        <button className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-4 rounded-lg mt-8 shadow-xl">
-         Download Klink Wallet
+         Download AiCoinX Wallet
        </button>
      </div>
        )}

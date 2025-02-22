@@ -69,7 +69,7 @@ const node = () => setActiveTab("node");
       </div>
       <div className="relative flex justify-center" style={{width:200}}>
         <img
-          src="../assets/klink1.svg"
+          src="../assets/img/oksharp.png"
           alt="tap"
           className="w-60 h-60 animate-pulse cursor-pointer"
         />

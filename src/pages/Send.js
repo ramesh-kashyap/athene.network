@@ -33,7 +33,7 @@ const Send = () => {
       </div>
 
       <div className="text-center mt-8 px-4">
-        <h1 className="text-2xl font-bold">Use the Email Linked to Your Klink Account</h1>
+        <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
       </div>
 
       <div className="mt-8">
@@ -44,7 +44,7 @@ const Send = () => {
         <span className="text-purple-400 text-lg">📧</span>
         <input
           type="email"
-          placeholder="Enter Your Klink E-mail Here"
+          placeholder="Enter Your AiCoinX E-mail Here"
           className="w-full bg-transparent text-white text-lg px-3 focus:outline-none"
         />
       </div>
@@ -66,7 +66,7 @@ const Send = () => {
               <img src="/images/account-connected.png" alt="Account Connected" className="w-24 h-24" />
             </div>
             <h2 className="text-2xl font-bold">Account Connected</h2>
-            <p className="text-gray-400 mt-2">Click below to be redirected to your Klink app</p>
+            <p className="text-gray-400 mt-2">Click below to be redirected to your AiCoinX app</p>
             <button
               className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
               onClick={() => setIsModalOpen(false)}

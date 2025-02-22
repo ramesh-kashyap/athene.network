@@ -25,8 +25,8 @@ const Footer = () => {
             isActive("/quest") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/klink21.svg" alt="Task" className="w-6 h-6" />
-          <p className="text-xs">Airdrop</p>
+          <img src="../assets/click23.svg" alt="Task" className="w-6 h-6" />
+          <p className="text-xs">Task</p>
         </Link>
         <Link
           to="/mining"
@@ -43,8 +43,8 @@ const Footer = () => {
             isActive("/dailyboost") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/click23.svg" alt="Airdrop" className="w-6 h-6" />
-          <p className="text-xs">Task</p>
+          <img src="../assets/klink21.svg" alt="Airdrop" className="w-6 h-6" />
+          <p className="text-xs">Airdrop</p>
         </Link>
         <Link
           to="/activity"
