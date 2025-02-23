@@ -36,16 +36,16 @@ const DailyBoost = () => {
   };
 
   const faqItems = [
-    { question: "What are $AiCoinX Points?", answer: "$KLINK Points are earned through mining and completing tasks. They can be converted into $KLINK tokens at the TGE." },
+    { question: "What are $AiCoinX Points?", answer: "$AiCoinX Points are earned through mining and completing tasks. They can be converted into $AiCoinX tokens at the TGE." },
     { question: "What Are Tap Points?", answer: "Tap Points are earned by engaging with the platform and can be used to boost your earnings." },
-    { question: "When Will AiCoinX Airdrop Happen?", answer: "The Klink airdrop will take place at the Token Generation Event (TGE)." },
+    { question: "When Will AiCoinX Airdrop Happen?", answer: "The AiCoinX airdrop will take place at the Token Generation Event (TGE)." },
     { question: "Are There Other Ways I Can Earn?", answer: "Yes! You can earn through referrals, completing tasks, and participating in promotions." },
     { question: "What is $AiCoinX Mining?", answer: "$AiCoinX Mining allows users to earn $AiCoinX Points over time by engaging with the ecosystem." },
-    { question: "How Can I Start Mining Points?", answer: "Simply connect your Klink account and start participating in mining activities." },
+    { question: "How Can I Start Mining Points?", answer: "Simply connect your AiCoinX account and start participating in mining activities." },
     { question: "What Are Daily Multipliers?", answer: "Daily multipliers help boost your earnings based on your engagement level." },
     { question: "Will Airdrop Rewards Have Vesting?", answer: "Yes, some airdrop rewards may be subject to a vesting schedule." },
-    { question: "How Will I Claim Airdrop Rewards?", answer: "Airdrop rewards can be claimed through the Klink wallet once the TGE occurs." },
-    { question: "Is AiCoinX Available in All Countries?", answer: "Klink is available in most countries, but some regions may have restrictions." }
+    { question: "How Will I Claim Airdrop Rewards?", answer: "Airdrop rewards can be claimed through the AiCoinX wallet once the TGE occurs." },
+    { question: "Is AiCoinX Available in All Countries?", answer: "AiCoinX is available in most countries, but some regions may have restrictions." }
   ];
 
   return (
@@ -85,8 +85,8 @@ const DailyBoost = () => {
 
             <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500 shadow-lg">
               <div className="flex items-center gap-2">
-                <img src="../assets/klink2.svg" alt="klink" className="w-10 h-10" />
-                <span className="text-gray-300">Connect your Klink Account</span>
+                <img src="../assets/img/oksharp.png" alt="klink" className="w-9 h-10" />
+                <span className="text-gray-300">Connect your AiCoinX Account</span>
               </div>
               <button className="bg-yellow-500 text-black px-6  rounded-lg shadow-md" onClick={()=>navigate('/signup')}>CONNECT</button>
             </div>
@@ -100,7 +100,7 @@ const DailyBoost = () => {
                   }`} style={{backgroundColor:"rgb(0 0 0 / 22%)"}}
                 >
                   <p className="text-sm text-gray-300 font-semibold">Day {day}</p>
-                  <img src="../assets/klink30.svg" alt="klink" className="w-6 h-6 my-2" />
+                  <img src="../assets/img/oksharp.png" alt="klink" className="w-6 h-6 my-2" />
                   <p className="text-yellow-500 font-semibold text-lg">{amount.toLocaleString()}</p>
                   {multiplier && (
                     <span className="absolute -top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-semibold shadow-md">
@@ -131,17 +131,17 @@ const DailyBoost = () => {
             </div>
 
             <div className="text-center mt-6">
-              <p className="text-lg"style={{fontSize:'15px'}}>Total $KLINK Airdrop Points</p>
+              <p className="text-lg"style={{fontSize:'15px'}}>Total $AiCoinX Airdrop Points</p>
               <h1 className="text-5xl font-bold flex items-center justify-center gap-2" style={{fontSize:'20px'}}>
-                <img src="../assets/klink3.svg" alt="klink" className="w-8 h-8" />
+                <img src="../assets/img/oksharp.png" alt="klink" className="w-8 h-8" />
                 11,621
               </h1>
             </div>
 
             <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500">
               <div className="flex items-center gap-2">
-                <img src="../assets/klink3.svg" alt="klink" className="w-8 h-8" />
-                <span className="text-lg">Connect your Klink Account</span>
+                <img src="../assets/img/oksharp.png" alt="klink" className="w-8 h-8" />
+                <span className="text-lg">Connect your AiCoinX Account</span>
               </div>
               <button className="bg-yellow-500 text-black px-4  rounded-lg font-bold">Connect</button>
             </div>
@@ -149,7 +149,7 @@ const DailyBoost = () => {
             <div className="w-full max-w-md bg-gray-900 rounded-lg p-3 mt-6 flex justify-between items-center border border-yellow-500">
               <span className="bg-yellow-500 px-2 py-1 rounded text-black">X1.00</span>
               <span className="flex items-center gap-1">
-                <img src="../assets/klink2.svg" alt="klink" className="w-6 h-6" />
+                <img src="../assets/img/oksharp.png" alt="klink" className="w-6 h-6" />
                 +3,600 points/hour
               </span>
             </div>
@@ -185,10 +185,10 @@ const DailyBoost = () => {
               ✕
             </button>
             <div className="flex justify-center mb-4">
-              <img src="../assets/klink37.svg" alt="Account Connected" className="w-24 h-24" />
+              <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
             </div>
             <h2 className="text-2xl font-bold">Daily Reward</h2>
-            <p className="text-gray-400 mt-2">Your Daily Reward is ready. connect your klink account to start making profit!</p>
+            <p className="text-gray-400 mt-2">Your Daily Reward is ready. connect your AiCoinX account to start making profit!</p>
             <button
               className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
               onClick={() => navigate('/signup')}

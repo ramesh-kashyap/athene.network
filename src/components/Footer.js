@@ -16,16 +16,16 @@ const Footer = () => {
             isActive("/friends") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/click20.svg" alt="Ref" className="w-6 h-6" />
+          <img src="../assets/click20.svg" alt="Ref" className="w-7 h-6" style={{height:30}}/>
           <p className="text-xs">Ref</p>
         </Link>
         <Link
-          to="/quest"
+          to="/"
           className={`flex flex-col items-center ${
-            isActive("/quest") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
+            isActive("/") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/click23.svg" alt="Task" className="w-6 h-6" />
+          <img src="../assets/click23.svg" alt="Task" className="w-7 h-6" style={{height:30}}/>
           <p className="text-xs">Task</p>
         </Link>
         <Link
@@ -34,7 +34,7 @@ const Footer = () => {
             isActive("/mining") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/klink24.svg" alt="Tap" className="w-6 h-6" />
+          <img src="../assets/klink24.svg" alt="Tap" className="w-7 h-6" style={{height:30}}/>
           <p className="text-xs">Tap</p>
         </Link>
         <Link
@@ -43,7 +43,7 @@ const Footer = () => {
             isActive("/dailyboost") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/klink21.svg" alt="Airdrop" className="w-6 h-6" />
+          <img src="../assets/klink21.svg" alt="Airdrop" className="w-7 h-6" style={{height:30}}/>
           <p className="text-xs">Airdrop</p>
         </Link>
         <Link
@@ -52,7 +52,7 @@ const Footer = () => {
             isActive("/activity") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >
-          <img src="../assets/klink22.svg" alt="Stats" className="w-6 h-6" />
+          <img src="../assets/klink22.svg" alt="Stats" className="w-7 h-6" style={{height:30}}/>
           <p className="text-xs">Stats</p>
         </Link>
       </div>

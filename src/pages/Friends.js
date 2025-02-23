@@ -87,7 +87,7 @@ const Friends = () => {
               className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
               onClick={() => navigate('/signup')}
             >
-              Signup to Klink
+              Signup to AiCoinX
             </button>
           </div>
         </div>

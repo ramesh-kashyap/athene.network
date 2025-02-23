@@ -63,7 +63,7 @@ const node = () => setActiveTab("node");
         <p className="text-lg" styele={{fontSize:7}}>Tap Points</p>
         <h1 className="text-5xl font-bold flex items-center justify-center gap-2"
         >
-          <img src="../assets/klink2.svg" alt="coin" className="w-8 h-8" />
+          <img src="../assets/img/oksharp.png" alt="coin" className="w-8 h-8" />
           1,087
         </h1>
       </div>
@@ -71,13 +71,13 @@ const node = () => setActiveTab("node");
         <img
           src="../assets/img/oksharp.png"
           alt="tap"
-          className="w-60 h-60 animate-pulse cursor-pointer"
+          className="animate-pulse cursor-pointer"
         />
       </div>
       <div className="w-full max-w-md flex flex-col items-center text-white">
         <div className="flex justify-between w-full px-2">
           <p className="text-sm flex items-center gap-1">
-            <img src="../assets/klink2.svg" alt="coin" className="w-5 h-5" /> 500 / 500
+            <img src="../assets/img/oksharp.png" alt="coin" className="w-5 h-5" /> 500 / 500
           </p>
           <button className="flex items-center px-3 py-1 rounded-lg text-black text-sm gap-2 items-center">
             <img src="../assets/klink13.svg" alt="booster" className="w-5 h-5 mr-1" /> Boosters

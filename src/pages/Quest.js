@@ -7,17 +7,17 @@ const Quest = () => {
   const [activeTab, setActiveTab] = useState("community");
   const navigate = useNavigate();
 const tasks = [
-  { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/klink3.svg" },
+  { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/oksharp.png" },
   { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
 ];
 
 const communityTasks = [
   { id: 3, name: "Join TG Community", reward: "10,000", icon: "../assets/AiCoinX6.svg" },
-  { id: 4, name: "Join Klink TG Chat", reward: "10,000", icon: "../assets/AiCoinX8.svg" },
-  { id: 5, name: "Join Klink on X", reward: "10,000", icon: "../assets/AiCoinX9.svg" },
-  { id: 6, name: "Complete Klink tasks on Zealy", reward: "10,000", icon: "../assets/AiCoinX10.svg" },
-  { id: 7, name: "Join Klink on Discord", reward: "10,000", icon: "../assets/AiCoinX7.svg" },
-  { id: 8, name: "Join Klink on Insta", reward: "10,000", icon: "../assets/AiCoinX11.svg" },
+  { id: 4, name: "Join AiCoinX TG Chat", reward: "10,000", icon: "../assets/AiCoinX8.svg" },
+  { id: 5, name: "Join AiCoinX on X", reward: "10,000", icon: "../assets/AiCoinX9.svg" },
+  { id: 6, name: "Complete AiCoinX tasks on Zealy", reward: "10,000", icon: "../assets/AiCoinX10.svg" },
+  { id: 7, name: "Join AiCoinX on Discord", reward: "10,000", icon: "../assets/AiCoinX7.svg" },
+  { id: 8, name: "Join AiCoinX on Insta", reward: "10,000", icon: "../assets/AiCoinX11.svg" },
 ];
   return (
     <div 
@@ -26,7 +26,7 @@ const communityTasks = [
       <div className="w-full max-w-md flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
         <div className="relative" onClick={() => setIsModalOpen(true)}>
-        <img src="../assets/klink4.svg" alt="Invite Friend" className="text-white w-6 h-6" />
+        <img src="../assets/AiCoinX4.svg" alt="Invite Friend" className="text-white w-6 h-6" />
           <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
         </div>
       </div>
@@ -80,7 +80,7 @@ const communityTasks = [
               <img src="../assets/klink36.svg" alt="Account Connected" className="w-24 h-24" />
             </div>
             <h2 className="text-2xl font-bold">Connected AiCoinX Wallet</h2>
-            <p className="text-gray-400 mt-2">Signup and connect your Klink Wallet to start redeeming rewards directly to your account.</p>
+            <p className="text-gray-400 mt-2">Signup and connect your AiCoinX Wallet to start redeeming rewards directly to your account.</p>
             <button
               className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
               onClick={() => navigate('/signup')}

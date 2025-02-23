@@ -106,178 +106,95 @@ const [dots, setDots] = useState([]);
 //   const interval = setInterval(generateDots, 5000);
 //   return () => clearInterval(interval);
 // }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("community");
+const tasks = [
+  { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
+  { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
+];
 
+const communityTasks = [
+  { id: 3, name: "Join TG Community", reward: "10,000", icon: "../assets/klink6.svg" },
+  { id: 4, name: "Join AiCoinX TG Chat", reward: "10,000", icon: "../assets/klink8.svg" },
+  { id: 5, name: "Join AiCoinX on X", reward: "10,000", icon: "../assets/klink9.svg" },
+  { id: 6, name: "Complete AiCoinX tasks on Zealy", reward: "10,000", icon: "../assets/klink10.svg" },
+  { id: 7, name: "Join AiCoinX on Discord", reward: "10,000", icon: "../assets/klink7.svg" },
+  { id: 8, name: "Join AiCoinX on Insta", reward: "10,000", icon: "../assets/klink11.svg" },
+];
 
   return (
-    <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center">
-      {/* User Profile */}
-
-       {/* Background Blinking Dots */}
-       {dots.map((dot, index) => (
-        <div
-          key={index}
-          className="absolute w-2 h-2 bg-white opacity-50 animate-blink"
-          style={{ left: dot.left, top: dot.top, animationDelay: dot.animationDelay }}
-        ></div>
-      ))}
-
-
-      <div className="flex items-center justify-between w-full max-w-md p-4">
-        <div className="flex items-center gap-3">
-          <div className="bg-teal-400 w-12 h-12 rounded-full flex items-center justify-center text-black text-lg font-bold">R</div>
-          <div>
-            <h2 className="text-xl font-bold text-white">{name}</h2>
-            <p className="text-sm text-teal-300">Level 29</p>
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/settings.png" alt="setting" style={{height:'30px', width: 'auto'}}/>
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/bells.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/Airdrop.png" alt="setting" style={{height:'35px', width: 'auto', marginTop:'-5px'}}/>
-          {/* <Settings className="text-gray-300 cursor-pointer" /> */}
-          {/* <Bell className="text-gray-300 cursor-pointer" />
-          <Gift className="text-teal-300 cursor-pointer" /> */}
-        </div>
+    <div 
+    className="bg-[#0d0d0d] text-gray-200 min-h-screen p-2 font-sans flex flex-col items-center relative" >
+    
+    <div className="w-full max-w-md flex justify-between items-center mb-6">
+      <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
+      <div className="relative" onClick={() => setIsModalOpen(true)}>
+      <img src="../assets/klink4.svg" alt="Invite Friend" className="text-white w-6 h-6" />
+        <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
       </div>
-      
-      {/* Giveaway Banner */}
-      <div className="w-full max-w-md  from-red-700 to-black p-4 rounded-xl text-center my-4 border border-teal-400" style={{ background: "#000" }}>
-        <h2 className="text-lg font-bold text-gray-100"><span style={{color:"	#FFD700"}}>10,000</span> ATH GIVEAWAY</h2>
-        <p className="text-sm text-gray-300">Follow us on <span className="text-red-400">YouTube</span></p>
-      </div>
-      
-      {/* Streak and Reward */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400"style={{background: "#000"}}>
-        <div className="flex items-center gap-2">
-        <img className="text-gray-300 cursor-pointer" src="../assets/img/wstar.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}} onClick={handleAuthentication}/>
-          {/* <Star className="text-teal-300" /> */}
-          <div>
-            <p className="text-sm text-gray-300">Streak</p>
-            <p className="text-lg font-bold text-white">0</p>
-          </div>
-        </div>
-        <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Receive <span style={{color:"	#FFD700"}}>100</span></button>
-      </div>
-      
-      {/* Quests Section */}
-      <div className="w-full max-w-md p-4 rounded-xl flex justify-between items-center my-4 border border-teal-400" style={{background: "#000"}}>
-      <img className="text-gray-300 cursor-pointer" src="../assets/img/wtresure.gif" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-        <p className="text-sm text-gray-300">Complete quests to earn more gems</p>
-        <button className="bg-teal-500 px-6 py-2 rounded-lg text-black font-bold">Quest</button>
-      </div>
-      
-      {/* Mining Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
-        <h3 className="text-lg font-bold text-teal-300">MINING</h3>
-        <div className="grid grid-cols-4 gap-4 mt-4 text-center">
-          <div className="flex flex-col items-center">
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center"> */}
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/wtap.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-            {/* </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">TAP</p>
-          </div>
-          <div className="flex flex-col items-center">
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Network className="text-white w-8 h-8" /> */}
-              <img className="text-gray-300 cursor-pointer" src="../assets/img/nodes.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-            {/* </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Node</p>
-          </div>
-          <div className="flex flex-col items-center">
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center"> */}
-            <img className="text-gray-300 cursor-pointer" src="../assets/img/boosts.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-            {/* </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Boost</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/Leaderboards.png" alt="setting" style={{height:'40px', width: 'auto', marginTop:'-5px'}}/>
-
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Trophy className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300" onClick={()=>navigate("/leaderboard")}>Leaderboard</p>
-          </div>
-        </div>
-      </div>
-      {/* Community Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
-        <h3 className="text-lg font-bold text-teal-300">COMMUNITY</h3>
-        <div className="grid grid-cols-4 gap-4 mt-4 text-center">
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/Statistics.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <BarChart className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Statistic</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/friend.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Users className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Friend</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/votes.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Star className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Vote</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/telegrams.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Globe className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Telegram</p>
-          </div>
-        </div>
-      </div>
-
-       
-      {/* Premium Privileges Section */}
-      <div className="w-full max-w-md bg-gray-900 p-4 rounded-xl mt-4 border border-teal-400" style={{background: "#000"}}>
-        <h3 className="text-lg font-bold text-teal-300">PREMIUM PRIVILEGES</h3>
-        <div className="grid grid-cols-4 gap-4 mt-4 text-center">
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/premiums.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Crown className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Premium</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/gem.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Diamond className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">PPick</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/referrals.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Users className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Referral</p>
-          </div>
-          <div className="flex flex-col items-center">
-          <img className="text-gray-300 cursor-pointer" src="../assets/img/revenues.png" alt="setting" style={{height:'40px', width: 'auto',}}/>
-            {/* <div className="bg-teal-600 p-4 rounded-full flex items-center justify-center">
-              <Banknote className="text-white w-8 h-8" />
-            </div> */}
-            <p className="text-sm mt-1 font-semibold text-gray-300">Revenue</p>
-          </div>
-        </div>
-      </div>
-      
-       <br></br>
-       <br></br>
-         {/* Footer Navigation */}
-         <Footer />
-
-        
     </div>
+    
+    <div className="w-full max-w-md space-y-4">
+      {tasks.map(task => (
+        <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
+          <div className="flex items-center gap-3">
+            <img src={task.icon} alt={task.name} className="w-11 h-12" />
+            <div>
+              <p className="text-white font-bold">{task.name}</p>
+              <p className="text-gray-400 text-sm">{task.reward}</p>
+            </div>
+          </div>
+          <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+        </div>
+      ))}
+    </div>
+    
+    <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400">
+      <button className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
+      <button className={`relative text-white font-bold pb-2 ${activeTab === "socialtask" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("socialtask")}>Social Task<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
+      <button className={`relative text-white font-bold pb-2 ${activeTab === "partners" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("partners")}>Partners<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button>
+
+      {/* <button className="text-gray-500">Partners <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button> */}
+    </div>
+    
+    {activeTab === "community" && (
+      <div className="w-full max-w-md space-y-4 mt-4">
+        {communityTasks.map(task => (
+          <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
+            <div className="flex items-center gap-3">
+              <img src={task.icon} alt={task.name} className="w-11 h-12" />
+              <div>
+                <p className="text-white font-bold">{task.name}</p>
+                <p className="text-gray-400 text-sm">{task.reward}</p>
+              </div>
+            </div>
+            <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+          </div>
+        ))}
+      </div>
+    )}
+    {isModalOpen && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+        <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
+          <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
+            ✕
+          </button>
+          <div className="flex justify-center mb-4">
+            <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
+          </div>
+          <h2 className="text-2xl font-bold">Connected AiCoinX Wallet</h2>
+          <p className="text-gray-400 mt-2">Signup and connect your AiCoinX Wallet to start redeeming rewards directly to your account.</p>
+          <button
+            className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
+            onClick={() => navigate('/signup')}
+          >
+            Signup to AiCoinX
+          </button>
+        </div>
+      </div>
+    )}
+    <Footer/>
+  </div>
   );
 };
 

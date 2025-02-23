@@ -39,9 +39,9 @@ const ActivityDashboard = () => {
       </div>
 
       <div className="text-center mt-8">
-        <p className="text-lg text-gray-300"style={{fontSize:15}}>$KLINK Airdrop Points</p>
+        <p className="text-lg text-gray-300"style={{fontSize:15}}>$AiCoinX Airdrop Points</p>
         <h1 className="text-5xl font-bold flex items-center justify-center gap-2">
-          <img src="../assets/klink30.svg" alt="klink" className="w-10 h-10" />
+          <img src="../assets/img/ok3d.png" alt="klink" className="w-9 h-10" />
           11,621
         </h1>
       </div>
@@ -57,7 +57,7 @@ const ActivityDashboard = () => {
         <div className="text-center">
           <p className="text-gray-300 text-sm">Points earned from sharing with friends</p>
           <h2 className="text-3xl font-bold flex items-center justify-center gap-2">
-            <img src="../assets/klink30.svg" alt="points" className="w-8 h-8" />
+            <img src="../assets/img/ok3d.png" alt="points" className="w-8 h-8" />
             0
           </h2>
         </div>
@@ -72,23 +72,23 @@ const ActivityDashboard = () => {
         <div className="text-center mt-8">
         <p className="text-lg text-gray-300"style={{fontSize:15}}>Community $KLINK Points</p>
         <h1 className="text-5xl font-bold flex items-center justify-center gap-2">
-          <img src="../assets/klink30.svg" alt="klink" className="w-10 h-10" />
+          <img src="../assets/img/ok3d.png" alt="klink" className="w-9 h-10" />
           11,621,863,873
         </h1>
       </div>
 
       <div className="w-full max-w-md border-t border-gray-600 mt-8 py-6 flex flex-col items-center gap-4">
         <div className="text-center">
-          <p className="text-gray-300 text-sm">Total Klinkers</p>
+          <p className="text-gray-300 text-sm">Total AiCoinXers</p>
           <h2 className="text-3xl font-bold flex items-center justify-center gap-2">
             <img src="../assets/click20.svg" alt="referrals" className="w-8 h-8" />
             0
           </h2>
         </div>
         <div className="text-center">
-          <p className="text-gray-300 text-sm">Daily Klinkers</p>
+          <p className="text-gray-300 text-sm">Daily AiCoinXers</p>
           <h2 className="text-3xl font-bold flex items-center justify-center gap-2">
-            <img src="../assets/klink30.svg" alt="points" className="w-8 h-8" />
+            <img src="../assets/img/ok3d.png" alt="points" className="w-8 h-8" />
             0
           </h2>
         </div>
@@ -98,7 +98,7 @@ const ActivityDashboard = () => {
       
       {/*  */}
       <button className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-xl">
-        Connect Klink account
+        Connect AiCoinX account
       </button>
       <Footer/>
     </div>

@@ -36,7 +36,7 @@ const SignupPage = () => {
       {activeTab === "connect" && (
         <>
         <div className="text-center mt-8 px-4">
-          <h1 className="text-2xl font-bold">Use the Email Linked to Your Klink Account</h1>
+          <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
         </div>
   
         <div className="mt-8">
@@ -91,15 +91,15 @@ const SignupPage = () => {
      >
        
        <div className="text-center mt-8 px-4">
-         <h1 className="text-2xl font-bold">Register and Connect your Klink account to this bot</h1>
+         <h1 className="text-2xl font-bold">Register and Connect your AiCoinX account to this bot</h1>
        </div>
  
        <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl p-6 mt-8 shadow-lg">
          <div className="flex gap-3 items-start border-b border-gray-700 pb-4 mb-4">
            <img src="../assets/klink32.svg" alt="download" className="w-10 h-10" />
            <div>
-             <p className="text-white font-bold">Download Klink:</p>
-             <p className="text-gray-300 text-sm">from the app store (click “Download Klink” below to be re-directed.)</p>
+             <p className="text-white font-bold">Download AiCoinX:</p>
+             <p className="text-gray-300 text-sm">from the app store (click “Download AiCoinX” below to be re-directed.)</p>
            </div>
          </div>
          <div className="flex gap-3 items-start border-b border-gray-700 pb-4 mb-4">
