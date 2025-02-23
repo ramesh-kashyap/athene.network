@@ -7,16 +7,16 @@ const ReferralList = () => {
   // const [activeTab, setActiveTab] = useState("direct");
   const [activeTab, setActiveTab] = useState("community");
   const tasks = [
-    { id: 1, name: "Register Klink Account", reward: "500,000", icon: "/images/klink.png" },
-    { id: 2, name: "Learn More About Klink", reward: "10,000", icon: "/images/youtube.png" },
+    { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "/images/klink.png" },
+    { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "/images/youtube.png" },
   ];
 
   const communityTasks = [
     { id: 3, name: "Join TG Community", reward: "10,000", icon: "/images/telegram.png" },
-    { id: 4, name: "Join Klink TG Chat", reward: "10,000", icon: "/images/telegram-blue.png" },
-    { id: 5, name: "Join Klink on X", reward: "10,000", icon: "/images/x.png" },
-    { id: 6, name: "Complete Klink tasks on Zealy", reward: "10,000", icon: "/images/zealy.png" },
-    { id: 7, name: "Join Klink on Discord", reward: "10,000", icon: "/images/discord.png" },
+    { id: 4, name: "Join AiCoinX TG Chat", reward: "10,000", icon: "/images/telegram-blue.png" },
+    { id: 5, name: "Join AiCoinX on X", reward: "10,000", icon: "/images/x.png" },
+    { id: 6, name: "Complete AiCoinX tasks on Zealy", reward: "10,000", icon: "/images/zealy.png" },
+    { id: 7, name: "Join AiCoinX on Discord", reward: "10,000", icon: "/images/discord.png" },
   ];
   return (
     <div 
@@ -28,7 +28,7 @@ const ReferralList = () => {
       }}
     >
       <div className="w-full max-w-md flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">Register Klink Account</h1>
+        <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
         <div className="relative">
           <Bell className="text-white w-6 h-6" />
           <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
