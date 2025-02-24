@@ -35,9 +35,9 @@ const Home = () => {
         setName(initDataUnsafe.user.first_name);
         setLast(initDataUnsafe.user.last_name);
         localStorage.setItem("telegram_id", initDataUnsafe.user.id); // Store telegram_id locally
-        if (telegram_id) {
-                handleAuthentication(telegram_id);
-              }
+        // if (telegram_id) {
+        //         handleAuthentication(telegram_id);
+        //       }
       }
       setLoading(false); // Ensure loading is stopped after initialization
     }, []);
@@ -69,20 +69,26 @@ const Home = () => {
   //   }
   // };
     
-  const handleAuthentication = async (user) => {
-    try{
-    const response = await Api.post("auth/telegram-login", {
-      telegram_id: telegram_id,
-      tname: name,
-      tusername: username,
-      tlastname: lname,
-    });
-    console.log("Response:", response);
-  }
-  catch(error){
-    console.error("Error during authentication:", error);
-  }
-  };
+  // const handleAuthentication = async (user) => {
+  //   try{
+  //   const response = await Api.post("auth/telegram-login", {
+  //     telegram_id: telegram_id,
+  //     tname: name,
+  //     tusername: username,
+  //     tlastname: lname,
+  //   });
+  //   console.log("Response:", response);
+  //   if (response.data.token) {
+  //     // console.log(token);
+  //     // setToken(response.data.token);  // Ensure setToken() is defined in your code
+  //   } else {
+  //     console.error("Failed to fetch user info:", response);
+  //   }
+  // }
+  // catch(error){
+  //   console.error("Error during authentication:", error);
+  // }
+  // };
   
   useEffect(() => {    
     if (loading) {

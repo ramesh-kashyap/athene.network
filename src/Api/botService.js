@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Api = axios.create({
-  baseURL: 'https://4a34-2405-201-5802-909b-9f2-a38c-146a-7453.ngrok-free.app/api/', // Ensure backend is running
+  baseURL: 'https://8382-2405-201-5802-909b-1195-86fd-bed2-bc8.ngrok-free.app/api/', // Ensure backend is running
   headers: {
     'Content-Type': 'application/json',
   },
@@ -19,7 +19,6 @@ const Api = axios.create({
 //   },
 //   error => Promise.reject(error)
 // );
-
 // Response interceptor to log responses and handle errors
 // Api.interceptors.response.use(
 //   response => {

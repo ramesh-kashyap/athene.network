@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
 import Api from '../Api/botService';
-const SignupPage = () => {
-  const [activeTab, setActiveTab] = useState("signup");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [email, setEmail] = useState("");
+const otp = () => {
+  const [email, setEmail] = useState();
   const navigate = useNavigate();
-
-    
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await Api.post("auth/connect", { email });
-      // if (response.data.success) {
+      if (response.data.success) {
         navigate("/otp-verification"); // Redirect to OTP page
-      // }
+      }
     } catch (error) {
       console.error("Error sending OTP:", error);
     }
@@ -31,25 +27,6 @@ const SignupPage = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="w-full max-w-md flex justify-between rounded-xl bg-gray-800 p-1 shadow-lg">
-        <button
-          className={`w-1/2 text-center py-2 rounded-xl font-bold text-lg transition-all ${
-            activeTab === "signup" ? "bg-purple-600 text-white" : "bg-gray-900 text-white"
-          }`}
-          onClick={() => setActiveTab("signup")}
-        >
-          Sign Up
-        </button>
-        <button
-          className={`w-1/2 text-center py-2 rounded-xl font-bold text-lg transition-all ${
-            activeTab === "connect" ? "bg-purple-600 text-white" : "bg-transparent text-gray-400"
-          }`}
-          onClick={() => setActiveTab("connect")}
-        >
-          Connect Account
-        </button>
-      </div>
-      {activeTab === "connect" && (
         <>
         <div className="text-center mt-8 px-4">
           <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
@@ -78,28 +55,6 @@ const SignupPage = () => {
           Log In
         </button>
         </>
-      )}
-       
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
-            <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
-              ✕
-            </button>
-            <div className="flex justify-center mb-4">
-              <img src="../assets/klink32.svg" alt="Account Connected" className="w-24 h-24" />
-            </div>
-            <h2 className="text-2xl font-bold">Account Connected</h2>
-            <p className="text-gray-400 mt-2">Click below to be redirected to your Klink app</p>
-            <button
-              className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Done
-            </button>
-          </div>
-        </div>
-      )}
        {activeTab ==="signup" &&(
        <div      className="min-h-screen flex flex-col items-center px-6 py-8 text-white relative font-sans"
        style={{
@@ -162,4 +117,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default otp;
