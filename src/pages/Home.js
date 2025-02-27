@@ -4,22 +4,33 @@ import Footer from '../components/Footer';
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import Api from '../Api/botService';
 import Loader from "../components/Loader"; 
+import SuccessPopup from "../components/SuccessPopup";
+import { CheckCircleIcon } from "@heroicons/react/solid"; // Install HeroIcons for icons
+
+
 const Home = () => {
   const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true); 
+  const [showModal, setShowModal] = useState(false);
+  const [communityTasks, setTasks] = useState([]);
+  const [loadingTasks, setLoadingTasks] = useState({});
     // const [token, setToken] = useState(localStorage.setItem("token"));
     const [telegram_id, setTelegramId] = useState(localStorage.getItem("telegram_id"));
     const [username, setUsername] = useState("Guest");
     const [name, setName] = useState("ABC");
     const [lname, setLast] = useState("XYZ");
     const [user, setUser] = useState(null);
+    const [claimableTasks, setClaimableTasks] = useState({});
     // Check if the Telegram WebApp SDK is available
     const tg = window.Telegram;
     console.log(tg);  
     // console.log("Token from localStorage:", localStorage.getItem("token"));
 
     useEffect(() => {
+      getTaskRecord();
+      setShowModal(false);
+
       if (!window.Telegram || !window.Telegram.WebApp) {
         console.error("❌ Telegram WebApp SDK is missing.");
         setLoading(false); // Stop loading if the SDK is missing
@@ -90,7 +101,8 @@ const Home = () => {
   // }
   // };
   
-  useEffect(() => {    
+  useEffect(() => {
+        
     if (loading) {
       setUserData("ABC");
       setLoading(false); // Avoid infinite loop
@@ -99,38 +111,70 @@ const Home = () => {
 const navigate = useNavigate();
 const [dots, setDots] = useState([]);
 
-// useEffect(() => {
-//   const generateDots = () => {
-//     const newDots = Array.from({ length: 10 }).map(() => ({
-//       left: `${Math.random() * 100}%`,
-//       top: `${Math.random() * 100}%`,
-//       animationDelay: `${Math.random() * 5}s`,
-//     }));
-//     setDots(newDots);
-//   };
-//   generateDots();
-//   const interval = setInterval(generateDots, 5000);
-//   return () => clearInterval(interval);
-// }, []);
+  const getTaskRecord = async () => {
+    try {
+      const telegram_id = "7399746452"; // Replace with actual Telegram ID
+      const response = await Api.post("auth/getTasks", {telegram_id:telegram_id} ); // Axios automatically parses JSON
+      setTasks(response.data); // Use response.data
+    } catch (error) {
+      console.error("Error fetching user info:", error);
+    }
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("community");
-const tasks = [
-  { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
-  { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
-];
+  const tasks = [
+    { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
+    { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
+  ];
 
-const communityTasks = [
-  { id: 3, name: "Join TG Community", reward: "10,000", icon: "../assets/klink6.svg" },
-  { id: 4, name: "Join AiCoinX TG Chat", reward: "10,000", icon: "../assets/klink8.svg" },
-  { id: 5, name: "Join AiCoinX on X", reward: "10,000", icon: "../assets/klink9.svg" },
-  { id: 6, name: "Complete AiCoinX tasks on Zealy", reward: "10,000", icon: "../assets/klink10.svg" },
-  { id: 7, name: "Join AiCoinX on Discord", reward: "10,000", icon: "../assets/klink7.svg" },
-  { id: 8, name: "Join AiCoinX on Insta", reward: "10,000", icon: "../assets/klink11.svg" },
-];
+    const handleStart = async (taskId,taskUrl) => {
+    // Change button text after 5 seconds
+    window.open(taskUrl, "_blank");
+    setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));
+    const telegram_id = "7399746452"; // Replace with actual Telegram ID
+    const response = await Api.post("auth/startTask", {telegram_id:telegram_id,task_id: taskId} ); // Axios automatically parses JSON
+    setTimeout(() => {
+      setLoadingTasks((prev) => ({ ...prev, [taskId]: false }));
+      setClaimableTasks((prev) => ({ ...prev, [taskId]: true }));
+    }, 5000);
+
+
+  };
+
+  const handleClaim = async (taskId) => {
+      try {
+        const telegram_id = "7399746452"; // Replace with actual Telegram ID
+        const response = await Api.post("auth/claimTask",{ telegram_id: telegram_id, task_id: taskId }); // Axios automatically parses JSON
+       
+        setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));
+        setTimeout(() => {
+          setLoadingTasks((prev) => ({ ...prev, [taskId]: false }));
+          setShowModal(true);
+          setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+              task.id === taskId ? { ...task, status: "completed" } : task
+            )
+          );
+        }, 5000);
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+   
+
+
+  };
+
+
 
   return (
     <div 
     className="bg-[#0d0d0d] text-gray-200 min-h-screen p-2 font-sans flex flex-col items-center relative" >
+       {/* model popup/ */}
+            {showModal && (
+            <SuccessPopup/>
+            )}
+
     
     <div className="w-full max-w-md flex justify-between items-center mb-6">
       <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
@@ -147,34 +191,60 @@ const communityTasks = [
             <img src={task.icon} alt={task.name} className="w-11 h-12" />
             <div>
               <p className="text-white font-bold">{task.name}</p>
-              <p className="text-gray-400 text-sm">{task.reward}</p>
+              <p className="text-gray-400 text-sm"> <img src="assets/oksharp.png" style={{width:'14px',display:'inline'}} />  {task.reward}</p>
             </div>
           </div>
+
           <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+       
+
         </div>
       ))}
     </div>
     
-    <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400">
-      <button className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
-      <button className={`relative text-white font-bold pb-2 ${activeTab === "socialtask" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("socialtask")}>Social Task<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
-      <button className={`relative text-white font-bold pb-2 ${activeTab === "partners" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("partners")}>Partners<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button>
+    <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400" style={{    width: "100%"}}>
+      <button style={{width:'100%',margin:'auto'}} className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Our Social Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
+      {/* <button className={`relative text-white font-bold pb-2 ${activeTab === "socialtask" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("socialtask")}>Social Task<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
+      <button className={`relative text-white font-bold pb-2 ${activeTab === "partners" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("partners")}>Partners<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button> */}
 
       {/* <button className="text-gray-500">Partners <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">2</span></button> */}
     </div>
     
     {activeTab === "community" && (
       <div className="w-full max-w-md space-y-4 mt-4">
+
+        
         {communityTasks.map(task => (
           <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
             <div className="flex items-center gap-3">
               <img src={task.icon} alt={task.name} className="w-11 h-12" />
               <div>
                 <p className="text-white font-bold">{task.name}</p>
-                <p className="text-gray-400 text-sm">{task.reward}</p>
+                   <p className="text-gray-400 text-sm">  <img src="assets/oksharp.png" style={{width:'14px',display:'inline'}} />  {task.reward}</p>
               </div>
             </div>
-            <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+           
+           
+            {task.status === "completed" ? (
+                <CheckCircleIcon className="w-7 h-7 text-green-500" />
+            ) : 
+            claimableTasks[task.id] ? (
+          <button  onClick={() => handleClaim(task.id)} className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg" style={{background:'rgb(79 79 223)'}}>Claim</button>
+        ) : (
+          <button
+              onClick={() => handleStart(task.id,task.link)}
+              className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg flex items-center gap-2"
+              disabled={loadingTasks[task.id]}
+            >
+              {loadingTasks[task.id] ? (
+                <>
+                  <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+                </>
+              ) : (
+                "Start"
+              )}
+            </button>
+        )}
           </div>
         ))}
       </div>
