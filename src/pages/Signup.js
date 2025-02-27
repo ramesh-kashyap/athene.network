@@ -11,15 +11,26 @@ const SignupPage = () => {
     
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    if (!email.trim()) {
+      console.error("Email is required");
+      return;
+    }
+  
     try {
       const response = await Api.post("auth/connect", { email });
-      // if (response.data.success) {
+  
+      if (response.data.success) { 
+        localStorage.setItem("userEmail", email);
         navigate("/otp-verification"); // Redirect to OTP page
-      // }
+      } else {
+        console.error("Failed to send OTP:", response.data.message);
+      }
     } catch (error) {
-      console.error("Error sending OTP:", error);
+      console.error("Error sending OTP:", error.response ? error.response.data : error.message);
     }
   };
+  
   
 
   return (
@@ -49,7 +60,7 @@ const SignupPage = () => {
           Connect Account
         </button>
       </div>
-      {activeTab === "connect" && (
+      {activeTab === "signup" && (
         <>
         <div className="text-center mt-8 px-4">
           <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
@@ -100,7 +111,7 @@ const SignupPage = () => {
           </div>
         </div>
       )}
-       {activeTab ==="signup" &&(
+       {activeTab ==="connect" &&(
        <div      className="min-h-screen flex flex-col items-center px-6 py-8 text-white relative font-sans"
        style={{
          background:

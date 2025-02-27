@@ -73,6 +73,7 @@ const App = () => {
       console.log("Response:", response);
       if (response.data.token) {
         setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
       } else {
         console.error("Failed to fetch user info:", response);
       }
@@ -87,7 +88,7 @@ const App = () => {
     if (loading) {
       return <Loader />; // Show loader while loading
     }
-    return token ? element : <Navigate to="/signup" />;
+    return token ? element : <Navigate to="/" />;
   };
 
   return (
@@ -111,7 +112,7 @@ const App = () => {
           <Route path="/deposit" element={<ProtectedRoute element={<Deposit />} />} />
           <Route path="/tapairdrop" element={<ProtectedRoute element={<TapAirdrop />} />} />
           <Route path="/dailyboost" element={<ProtectedRoute element={<DailyBoost />} />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/signup" element={<ProtectedRoute element={<SignupPage />} />}/>
           <Route path="/activity" element={<ProtectedRoute element={<ActivityDashboard />} />} />
           <Route path="/otp-verification" element={<ProtectedRoute element={<Otp/>} />}/>
         </Routes>
