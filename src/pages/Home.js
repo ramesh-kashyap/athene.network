@@ -113,7 +113,6 @@ const [dots, setDots] = useState([]);
 
   const getTaskRecord = async () => {
     try {
-      const telegram_id = "7399746452"; // Replace with actual Telegram ID
       const response = await Api.post("auth/getTasks", {telegram_id:telegram_id} ); // Axios automatically parses JSON
       setTasks(response.data); // Use response.data
     } catch (error) {
@@ -127,12 +126,10 @@ const [dots, setDots] = useState([]);
     { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
     { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
   ];
-
-    const handleStart = async (taskId,taskUrl) => {
+   const handleStart = async (taskId,taskUrl) => {
     // Change button text after 5 seconds
     window.open(taskUrl, "_blank");
     setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));
-    const telegram_id = "7399746452"; // Replace with actual Telegram ID
     const response = await Api.post("auth/startTask", {telegram_id:telegram_id,task_id: taskId} ); // Axios automatically parses JSON
     setTimeout(() => {
       setLoadingTasks((prev) => ({ ...prev, [taskId]: false }));
