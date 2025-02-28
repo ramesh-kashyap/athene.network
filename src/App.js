@@ -102,7 +102,9 @@ const App = () => {
           <Route path="/wallet" element={<ProtectedRoute element={<Wallet />} />} />
           <Route path="/mining" element={<ProtectedRoute element={<Mining />} />} />
           <Route path="/quest" element={<ProtectedRoute element={<Quest />} />} />
-          <Route path="/friends" element={<ProtectedRoute element={<Friends />} />} />
+
+          {/* <Route path="/friends" element={<ProtectedRoute element={<Friends />} />} /> */}
+          <Route path="/friends" element={<Friends />} />
           <Route path="/withdraw" element={<ProtectedRoute element={<WithdrawPage />} />} />
           <Route path="/history" element={<ProtectedRoute element={<HistoryPage />} />} />
           <Route path="/send" element={<ProtectedRoute element={<Send />} />} />

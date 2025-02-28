@@ -14,6 +14,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true); 
   const [showModal, setShowModal] = useState(false);
   const [communityTasks, setTasks] = useState([]);
+  const [tasks, setTasksTop] = useState([]);
   const [loadingTasks, setLoadingTasks] = useState({});
     // const [token, setToken] = useState(localStorage.setItem("token"));
     const [telegram_id, setTelegramId] = useState(localStorage.getItem("telegram_id"));
@@ -103,6 +104,8 @@ const Home = () => {
   
   useEffect(() => {
         
+
+
     if (loading) {
       setUserData("ABC");
       setLoading(false); // Avoid infinite loop
@@ -114,7 +117,8 @@ const [dots, setDots] = useState([]);
   const getTaskRecord = async () => {
     try {
       const response = await Api.post("auth/getTasks", {telegram_id:telegram_id} ); // Axios automatically parses JSON
-      setTasks(response.data); // Use response.data
+      setTasks(response.data.buttonTask); // Use response.data
+      setTasksTop(response.data.topTask); // Use response.data
     } catch (error) {
       console.error("Error fetching user info:", error);
     }
@@ -122,13 +126,10 @@ const [dots, setDots] = useState([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("community");
-  const tasks = [
-    { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
-    { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
-  ];
+
    const handleStart = async (taskId,taskUrl) => {
     // Change button text after 5 seconds
-    window.open(taskUrl, "_blank");
+    window.open(taskUrl);
     setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));
     const response = await Api.post("auth/startTask", {telegram_id:telegram_id,task_id: taskId} ); // Axios automatically parses JSON
     setTimeout(() => {
@@ -141,14 +142,17 @@ const [dots, setDots] = useState([]);
 
   const handleClaim = async (taskId) => {
       try {
-        const telegram_id = "7399746452"; // Replace with actual Telegram ID
-        const response = await Api.post("auth/claimTask",{ telegram_id: telegram_id, task_id: taskId }); // Axios automatically parses JSON
-       
         setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));
+        const response = await Api.post("auth/claimTask",{ telegram_id: telegram_id, task_id: taskId }); // Axios automatically parses JSON    
         setTimeout(() => {
           setLoadingTasks((prev) => ({ ...prev, [taskId]: false }));
           setShowModal(true);
           setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+              task.id === taskId ? { ...task, status: "completed" } : task
+            )
+          );
+          setTasksTop((prevTasks) =>
             prevTasks.map((task) =>
               task.id === taskId ? { ...task, status: "completed" } : task
             )
@@ -162,8 +166,6 @@ const [dots, setDots] = useState([]);
 
   };
 
-
-
   return (
     <div 
     className="bg-[#0d0d0d] text-gray-200 min-h-screen p-2 font-sans flex flex-col items-center relative" >
@@ -172,6 +174,7 @@ const [dots, setDots] = useState([]);
             <SuccessPopup/>
             )}
 
+    
     
     <div className="w-full max-w-md flex justify-between items-center mb-6">
       <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
@@ -192,7 +195,26 @@ const [dots, setDots] = useState([]);
             </div>
           </div>
 
-          <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
+          {task.status === "completed" ? (
+                <CheckCircleIcon className="w-7 h-7 text-green-500" />
+            ) : 
+            claimableTasks[task.id] ? (
+          <button  onClick={() => handleClaim(task.id)} className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg" style={{background:'rgb(79 79 223)'}}>Claim</button>
+        ) : (
+          <button
+              onClick={() => handleStart(task.id,task.link)}
+              className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg flex items-center gap-2"
+              disabled={loadingTasks[task.id]}
+            >
+              {loadingTasks[task.id] ? (
+                <>
+                  <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+                </>
+              ) : (
+                "Start"
+              )}
+            </button>
+        )}
        
 
         </div>
