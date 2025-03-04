@@ -24,7 +24,7 @@ const Home = () => {
     const [claimableTasks, setClaimableTasks] = useState({});
     // Check if the Telegram WebApp SDK is available
     const tg = window.Telegram;
-    console.log(tg);  
+    // console.log(tg);  
     // console.log("Token from localStorage:", localStorage.getItem("token"));
 
     useEffect(() => {
@@ -141,7 +141,7 @@ const [dots, setDots] = useState([]);
 
   const handleClaim = async (taskId) => {
       try {
-        const telegram_id = "7399746452"; // Replace with actual Telegram ID
+        // const telegram_id = "7399746452"; // Replace with actual Telegram ID
         const response = await Api.post("auth/claimTask",{ telegram_id: telegram_id, task_id: taskId }); // Axios automatically parses JSON
        
         setLoadingTasks((prev) => ({ ...prev, [taskId]: true }));

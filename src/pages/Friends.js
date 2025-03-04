@@ -5,6 +5,16 @@ import {useNavigate} from "react-router-dom";
 
 const Friends = () => {
   const navigate = useNavigate();
+  const botUsername = "AiCoin07X_bot";
+  const userId = localStorage.getItem('userId');
+   const inviteLink = `https://t.me/${botUsername}?start=${userId}`;
+
+  // Telegram share link
+  const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(inviteLink)}&text=${encodeURIComponent(
+    "🚀 Join this amazing bot and earn rewards!"
+  )}`;
+
+
    const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="bg-[#0d0d0d] text-gray-200 min-h-screen p-2 font-sans flex flex-col items-center relative">
@@ -69,9 +79,10 @@ const Friends = () => {
           </div>
         </div>
       </div>
-      <button className="w-full max-w-md bg-[#7D5FFF] p-2 rounded-lg text-white font-bold text-lg mt-6 shadow-lg flex items-center justify-center gap-3">
+      <a href={shareUrl}
+        target="_blank" className="w-full max-w-md bg-[#7D5FFF] p-2 rounded-lg text-white font-bold text-lg mt-6 shadow-lg flex items-center justify-center gap-3">
         Invite a friend
-      </button>
+      </a>
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
           <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">

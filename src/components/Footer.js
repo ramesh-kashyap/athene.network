@@ -22,9 +22,7 @@ const Footer = () => {
         </Link>
         <Link
           to="/"
-          to="/"
           className={`flex flex-col items-center ${
-            isActive("/") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
             isActive("/") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >

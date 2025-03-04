@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
+import Api from '../Api/botService';
 const ActivityDashboard = () => {
   const [activeTab, setActiveTab] = useState("myActivity");
   const navigate = useNavigate();
+  const [totalBalance, settotalBalance] = useState("");
+  const [coinBalance, setcoinBalance] = useState("");
+  const [connected, setConnected] = useState("");
+  useEffect(() => {
+    fatchpoints();
+  }, []);
+  
+
+  const fatchpoints = async () =>{
+    try{
+       const response = await Api.post('auth/fatchPoint');
+      //  console.log("Api response", response);
+       if(response.data){
+        settotalBalance(response.data.coin_balance);
+        setcoinBalance(response.data.coin);
+        if(!response.data.telegram_id){
+          setConnected("❌ AiCoinX account is not connected")
+        }
+        else{
+            setConnected("")
+        }
+       }
+    }
+    catch(error){
+         console.error("error in fatching", error);
+    }
+  }
+
   return (
     <div
       className="bg-[#0d0d0d] text-gray-200 min-h-screen p-4 font-sans flex flex-col items-center relative"
@@ -34,15 +63,18 @@ const ActivityDashboard = () => {
       </div>
       {activeTab === "myActivity" &&(
         <>
-        <div className="w-full max-w-md bg-red-700 rounded-lg p-1 mt-4 flex items-center gap-3 shadow-lg">
-        <span className="text-lg font-semibold"style={{fontSize:15}}>❌ AiCoinX account is not connected</span>
+       {connected && ( // Only show this div if `connected` has a message
+      <div
+        className="w-full max-w-md rounded-lg p-3 mt-4 flex items-center gap-3 shadow-lg border bg-red-700 text-white border-red-500 shadow-red-500/50"
+      >
+        <span className="text-base font-semibold tracking-wide">{connected}</span>
       </div>
-
+    )}
       <div className="text-center mt-8">
         <p className="text-lg text-gray-300"style={{fontSize:15}}>$AiCoinX Airdrop Points</p>
         <h1 className="text-5xl font-bold flex items-center justify-center gap-2">
           <img src="../assets/img/ok3d.png" alt="klink" className="w-9 h-10" />
-          11,621
+          {coinBalance}
         </h1>
       </div>
 
@@ -73,7 +105,7 @@ const ActivityDashboard = () => {
         <p className="text-lg text-gray-300"style={{fontSize:15}}>Community $KLINK Points</p>
         <h1 className="text-5xl font-bold flex items-center justify-center gap-2">
           <img src="../assets/img/ok3d.png" alt="klink" className="w-9 h-10" />
-          11,621,863,873
+          {totalBalance}
         </h1>
       </div>
 

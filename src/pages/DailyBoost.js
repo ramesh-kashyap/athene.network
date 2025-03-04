@@ -1,33 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Footer from '../components/Footer';
 import {useNavigate} from "react-router-dom";
-const dailyRewards = [
-  { day: 1, amount: 4000 , multiplier: "x" },
-  { day: 2, amount: 8000 , multiplier: "" },
-  { day: 3, amount: 12000 , multiplier: "" },
-  { day: 4, amount: 15000 , multiplier: "" },
-  { day: 5, amount: 20000 , multiplier: "" },
-  { day: 6, amount: 25000 , multiplier: "" },
-  { day: 7, amount: 30000, multiplier: "" },
-  { day: 8, amount: 40000 , multiplier: "" },
-  { day: 9, amount: 50000 , multiplier: "" },
-  { day: 10, amount: 60000 , multiplier: "" },
-  { day: 11, amount: 70000 , multiplier: "" },
-  { day: 12, amount: 80000 , multiplier: "" },
-  { day: 13, amount: 90000 , multiplier: "" },
-  { day: 14, amount: 100000, multiplier: "x3" },
-  { day: 15, amount: 120000 },
-  { day: 16, amount: 140000 , multiplier: "" }
-];
+import Api from '../Api/botService';
 
 
-const DailyBoost = () => {
+  
+  const DailyBoost = () => {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("dailyBoost");
   const [faqOpen, setFaqOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
-  
+  const [dailyRewards, setDailyRewards] = useState([]);
+  const [claimedRewards, setClaimedRewards] = useState([]);
+  const [lastClaimedDay, setLastClaimedDay] = useState(null);
+  const [firstClaimedDate, setFirstClaimedDate] = useState(null);
+  const [eligibleRewardId, setEligibleRewardId] = useState(null);
+  const [connect, setConnected] = useState(false);
 //    useEffect =()=>{
 //    setIsModalOpen(true);
 // }
@@ -47,6 +36,99 @@ const DailyBoost = () => {
     { question: "How Will I Claim Airdrop Rewards?", answer: "Airdrop rewards can be claimed through the AiCoinX wallet once the TGE occurs." },
     { question: "Is AiCoinX Available in All Countries?", answer: "AiCoinX is available in most countries, but some regions may have restrictions." }
   ];
+  useEffect(() => {
+    fetchRewards();
+    Claimed();
+  }, []);
+  
+  
+
+  const fetchRewards = async () => {
+    try {
+        const response = await Api.post('auth/baycoin', { Coins: "newBalance" });
+        // console.log("API Response:", response);
+        if(response?.data){
+          setDailyRewards(response.data.data);
+        }
+        else {
+          throw new Error('Failed to fetch ');
+        }      
+        if(response.data.telegram_id){
+          setConnected(true);
+        }
+        else{
+          setConnected(false);
+        }
+    } catch (error) {
+        console.error("❌ Fetching rewards failed:", error);
+    }
+  };
+  const Claimed = async () => {
+    try {
+      const response = await Api.post('auth/claim-day');
+      // console.log(response.data); 
+  
+      if (response.data.lastClaimed) {
+        const lastClaimedTimestamp = new Date(response.data.lastClaimed).getTime();
+        const nowTimestamp = new Date().getTime();
+  
+        // Convert to day numbers
+        const lastClaimedDay = Math.floor(lastClaimedTimestamp / (1000 * 60 * 60 * 24));
+        const nowDay = Math.floor(nowTimestamp / (1000 * 60 * 60 * 24));
+  
+        // Calculate days missed
+        const daysMissed = nowDay - lastClaimedDay;
+  
+        // Check if user skipped 2+ days
+        if (daysMissed >= 2) {
+          setEligibleRewardId(response.data.userClaimsCount + daysMissed);
+        } else {
+          // Check if 24 hours have passed since last claim
+          const hoursPassed = (nowTimestamp - lastClaimedTimestamp) / (1000 * 60 * 60); 
+          if (hoursPassed >= 24) {
+            setEligibleRewardId(response.data.userClaimsCount + 1);
+          } else {
+            setEligibleRewardId(null); // Block claiming before 24 hours
+          }
+        }
+  
+        setLastClaimedDay(response.data.userClaimsCount);
+      } else {
+        setEligibleRewardId(1);
+        setLastClaimedDay(0);
+      }
+    } catch (error) {
+      console.error(error, '❌ Failed to fetch claim data');
+    }
+  };
+  
+  
+  const handleClaim = async (reward) => {
+    if (reward.id !== eligibleRewardId) {
+      alert("❌ You must wait 24 hours before claiming the next reward!");
+      return;
+    }
+  
+    try {
+      const response = await Api.post('auth/claim-reward', { rewardId: reward.id });
+  
+      if (response?.data?.success) {
+        setClaimedRewards([...claimedRewards, reward.id]);
+        setIsModalOpen(true);
+        // alert("🎉 Reward claimed successfully!");
+        Claimed(); // Refresh claim status
+      } else {
+        throw new Error("Claim failed");
+      }
+    } catch (error) {
+      console.error("❌ Claiming reward failed:", error);
+    }
+  };
+  
+  
+
+
+
 
   return (
     <>
@@ -82,7 +164,7 @@ const DailyBoost = () => {
             <div className="text-center mt-6 font-semibold">
               <p className="text-gray-300 mt-2">Check in daily to claim points and boost your mining rewards!</p>
             </div>
-
+            {!connect && (
             <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500 shadow-lg">
               <div className="flex items-center gap-2">
                 <img src="../assets/img/oksharp.png" alt="klink" className="w-9 h-10" />
@@ -90,26 +172,26 @@ const DailyBoost = () => {
               </div>
               <button className="bg-yellow-500 text-black px-6  rounded-lg shadow-md" onClick={()=>navigate('/signup')}>CONNECT</button>
             </div>
-
+             )}
             <div className="grid grid-cols-4 gap-4 mt-8">
-              {dailyRewards.map(({ day, amount, multiplier }) => (
-                <div
-                  key={day}
-                  className={`bg-gray-900 p-4 rounded-lg text-center border relative flex flex-col items-center justify-center shadow-md ${
-                    multiplier ? "border-yellow-500" : "border-gray-700"
-                  }`} style={{backgroundColor:"rgb(0 0 0 / 22%)"}}
-                >
-                  <p className="text-sm text-gray-300 font-semibold">Day {day}</p>
-                  <img src="../assets/img/oksharp.png" alt="klink" className="w-6 h-6 my-2" />
-                  <p className="text-yellow-500 font-semibold text-lg">{amount.toLocaleString()}</p>
-                  {multiplier && (
-                    <span className="absolute -top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-semibold shadow-md">
-                      {multiplier}
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
+            {dailyRewards.map((reward) => (
+  <div
+    key={reward.id}
+    className={`bg-gray-900 p-4 rounded-lg text-center border relative flex flex-col items-center justify-center shadow-md border-yellow-500 cursor-pointer transition-opacity ${
+      reward.id === eligibleRewardId ? "opacity-100" : "opacity-50 pointer-events-none"
+    }`}
+    style={{ backgroundColor: "rgba(0, 0, 0, 0.22)" }}
+    onClick={() => reward.id === eligibleRewardId && handleClaim(reward)}
+  >
+    <p className="text-sm text-gray-300 font-semibold" style={{fontWeight:200, fontSize:10}}>Day {reward.id}</p>
+    <img src="../assets/img/oksharp.png" alt="klink" className="w-6 h-6 my-2" />
+    <p className="text-yellow-500 font-semibold text-lg" style={{lineHeight:1}}>{reward.coins}</p>
+  </div>
+))}
+
+
+</div>
+
           </>
         )}
 
@@ -130,21 +212,23 @@ const DailyBoost = () => {
               <span  className="text-gray-300 m-2" style={{fontSize:'10px'}}>Disconnected</span>
             </div>
 
-            <div className="text-center mt-6">
-              <p className="text-lg"style={{fontSize:'15px'}}>Total $AiCoinX Airdrop Points</p>
+            {/* <div className="text-center mt-6">
+              <p className="text-lg"style={{fontSize:'15px'}}>Today $AiCoinX Airdrop Points</p>
               <h1 className="text-5xl font-bold flex items-center justify-center gap-2" style={{fontSize:'20px'}}>
                 <img src="../assets/img/oksharp.png" alt="klink" className="w-8 h-8" />
                 11,621
               </h1>
-            </div>
+            </div> */}
 
-            <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500">
+            {!connect && (
+            <div className="w-full max-w-md bg-gray-800 rounded-lg p-3 flex justify-between items-center mt-6 border border-yellow-500 shadow-lg">
               <div className="flex items-center gap-2">
-                <img src="../assets/img/oksharp.png" alt="klink" className="w-8 h-8" />
-                <span className="text-lg">Connect your AiCoinX Account</span>
+                <img src="../assets/img/oksharp.png" alt="klink" className="w-9 h-10" />
+                <span className="text-gray-300">Connect your AiCoinX Account</span>
               </div>
-              <button className="bg-yellow-500 text-black px-4  rounded-lg font-bold">Connect</button>
+              <button className="bg-yellow-500 text-black px-6  rounded-lg shadow-md" onClick={()=>navigate('/signup')}>CONNECT</button>
             </div>
+             )}
 
             <div className="w-full max-w-md bg-gray-900 rounded-lg p-3 mt-6 flex justify-between items-center border border-yellow-500">
               <span className="bg-yellow-500 px-2 py-1 rounded text-black">X1.00</span>
@@ -188,10 +272,10 @@ const DailyBoost = () => {
               <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
             </div>
             <h2 className="text-2xl font-bold">Daily Reward</h2>
-            <p className="text-gray-400 mt-2">Your Daily Reward is ready. connect your AiCoinX account to start making profit!</p>
+            <p className="text-gray-400 mt-2">🎉 Reward claimed successfully!</p>
             <button
               className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
-              onClick={() => navigate('/signup')}
+              onClick={() => setIsModalOpen(false)}
             >
               Claim
             </button>

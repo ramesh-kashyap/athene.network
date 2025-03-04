@@ -6,7 +6,6 @@ const SignupPage = () => {
   const [activeTab, setActiveTab] = useState("signup");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
     
@@ -19,8 +18,7 @@ const SignupPage = () => {
     }
   
     try {
-      const response = await Api.post("auth/connect", { email });
-  
+      const response = await Api.post("auth/connect", { email });  
       if (response.data.success) { 
         localStorage.setItem("userEmail", email);
         navigate("/otp-verification"); // Redirect to OTP page
@@ -77,19 +75,14 @@ const SignupPage = () => {
           <input
             type="email"
             placeholder="Enter Your AiCoinX E-mail Here"
-            placeholder="Enter Your AiCoinX E-mail Here"
             className="w-full bg-transparent text-white text-lg px-3 focus:outline-none"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)}  
           />
         </div>
   
         <button
           className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-4 rounded-lg mt-8 shadow-xl"
-          onClick={handleSubmit}
-          // onClick={() => setIsModalOpen(true)}
           onClick={handleSubmit}
           // onClick={() => setIsModalOpen(true)}
         >
