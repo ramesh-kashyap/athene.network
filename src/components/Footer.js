@@ -9,6 +9,7 @@ const Footer = () => {
 
   return (
     <>
+    <br></br>
       <div className="fixed bottom-0 w-full max-w-md bg-[#1C1A3A] p-2 flex justify-around border-t border-gray-700 mt-6 rounded-t-xl">
         <Link
           to="/friends"
@@ -21,7 +22,9 @@ const Footer = () => {
         </Link>
         <Link
           to="/"
+          to="/"
           className={`flex flex-col items-center ${
+            isActive("/") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
             isActive("/") ? "border border-gray-500 shadow-lg rounded-lg bg-[#7660FF30]" : ""
           }`}
         >

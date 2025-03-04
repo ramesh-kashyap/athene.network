@@ -6,6 +6,7 @@ const SignupPage = () => {
   const [activeTab, setActiveTab] = useState("signup");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
     
@@ -64,6 +65,7 @@ const SignupPage = () => {
         <>
         <div className="text-center mt-8 px-4">
           <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
+          <h1 className="text-2xl font-bold">Use the Email Linked to Your AiCoinX Account</h1>
         </div>
   
         <div className="mt-8">
@@ -75,7 +77,10 @@ const SignupPage = () => {
           <input
             type="email"
             placeholder="Enter Your AiCoinX E-mail Here"
+            placeholder="Enter Your AiCoinX E-mail Here"
             className="w-full bg-transparent text-white text-lg px-3 focus:outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} 
             value={email}
             onChange={(e) => setEmail(e.target.value)} 
           />
@@ -83,6 +88,8 @@ const SignupPage = () => {
   
         <button
           className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-4 rounded-lg mt-8 shadow-xl"
+          onClick={handleSubmit}
+          // onClick={() => setIsModalOpen(true)}
           onClick={handleSubmit}
           // onClick={() => setIsModalOpen(true)}
         >
@@ -122,12 +129,15 @@ const SignupPage = () => {
        
        <div className="text-center mt-8 px-4">
          <h1 className="text-2xl font-bold">Register and Connect your AiCoinX account to this bot</h1>
+         <h1 className="text-2xl font-bold">Register and Connect your AiCoinX account to this bot</h1>
        </div>
  
        <div className="w-full max-w-md bg-gray-900 border border-gray-700 rounded-2xl p-6 mt-8 shadow-lg">
          <div className="flex gap-3 items-start border-b border-gray-700 pb-4 mb-4">
            <img src="../assets/klink32.svg" alt="download" className="w-10 h-10" />
            <div>
+             <p className="text-white font-bold">Download AiCoinX:</p>
+             <p className="text-gray-300 text-sm">from the app store (click “Download AiCoinX” below to be re-directed.)</p>
              <p className="text-white font-bold">Download AiCoinX:</p>
              <p className="text-gray-300 text-sm">from the app store (click “Download AiCoinX” below to be re-directed.)</p>
            </div>
@@ -159,6 +169,7 @@ const SignupPage = () => {
        </div>
  
        <button className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-4 rounded-lg mt-8 shadow-xl">
+         Download AiCoinX Wallet
          Download AiCoinX Wallet
        </button>
      </div>

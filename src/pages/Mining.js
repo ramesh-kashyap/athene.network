@@ -92,6 +92,7 @@ const progressPercentage = (balance / maxBalance) * 100;
       <div className="relative flex justify-center" style={{width:150, marginTop:40}}>
         <img
           src="../assets/img/oksharp.png"
+          src="../assets/img/oksharp.png"
           alt="tap"
           className="animate-pulse cursor-pointer"  onClick={addCoin}          
         />

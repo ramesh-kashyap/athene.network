@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Api from "../Api/botService";
 
 const Otp = () => {
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);  
   const inputRefs = useRef([]);
   const navigate = useNavigate();
 
@@ -52,9 +51,10 @@ const Otp = () => {
     try {
       const response = await Api.post("auth/verify-otp", { email: userEmail, otp: enteredOtp, telegram_id: telegram_id, });
       if (response.data.success) {
-        alert("OTP Verified Successfully!");
         localStorage.removeItem("userEmail");
-        setIsModalOpen(true);
+        sessionStorage.setItem("otpSuccess", "true"); // Set flag
+        sessionStorage.setItem("popupMessage", "✅ OTP verified successfully!");
+        navigate('/mining');
       } else {
         alert("Invalid OTP. Please try again.");
       }
@@ -90,26 +90,7 @@ const Otp = () => {
         ))}
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
-            <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => navigate('/')}>
-              ✕
-            </button>
-            <div className="flex justify-center mb-4">
-              <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
-            </div>
-            <h2 className="text-2xl font-bold">Account Connected</h2>
-            <p className="text-gray-400 mt-2">Click below to be redirected to your AiCoinX app</p>
-            <button
-              className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
-              onClick={() => navigate('/')}
-            >
-              Done
-            </button>
-          </div>
-        </div>
-      )}
+    
 
       <button
         className="w-full max-w-md bg-green-600 text-white text-lg font-bold py-4 rounded-lg mt-8 shadow-xl"
