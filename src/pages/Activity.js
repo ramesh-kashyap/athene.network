@@ -125,13 +125,15 @@ const ActivityDashboard = () => {
           </h2>
         </div>
       </div>
-      </>
+        </>
       )}
       
       {/*  */}
-      <button className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-xl">
+      {connected && (
+      <button className="w-full max-w-md bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-xl" onClick={()=>navigate('/signup')}>
         Connect AiCoinX account
       </button>
+      )}
       <Footer/>
     </div>
   );

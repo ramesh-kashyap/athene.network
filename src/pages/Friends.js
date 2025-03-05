@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 const Friends = () => {
   const navigate = useNavigate();
   const botUsername = "AiCoin07X_bot";
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem('telegram_id');
    const inviteLink = `https://t.me/${botUsername}?start=${userId}`;
 
   // Telegram share link
@@ -63,7 +63,7 @@ const Friends = () => {
           </div>
           <div className="grid grid-cols-3 items-center text-white text-center py-3 border-b border-gray-700">
             <div className="flex items-center justify-center gap-2">
-              <img src="../assets/klnik26.svg" alt="Bronze" className="w-6 h-6" /> 
+              <img src="../assets/img/oksharp.png" alt="Bronze" className="w-6 h-6" /> 
               <p>Bronze</p>
             </div>
             <p className="text-blue-400">+2,500</p>
@@ -71,7 +71,7 @@ const Friends = () => {
           </div>
           <div className="grid grid-cols-3 items-center text-white text-center py-3">
             <div className="flex items-center justify-center gap-2">
-              <img src="../assets/klink27.svg" alt="Silver" className="w-6 h-6" /> 
+              <img src="../assets/img/oksharp.png" alt="Silver" className="w-6 h-6" /> 
               <p>Silver</p>
             </div>
             <p className="text-blue-400">+5,000</p>

@@ -197,13 +197,7 @@ import Api from '../Api/botService';
 
         {/* Mining Section */}
         {activeTab === "mining" && (
-          <div
-            className="min-h-screen flex flex-col items-center p-6 text-white"
-            // style={{
-            //   background: "radial-gradient(circle at center, rgba(124, 77, 255, 0.6), rgba(17, 10, 29, 1))",
-            //   backgroundSize: "cover",
-            // }}
-          >
+          <div className="min-h-screen flex flex-col items-center p-6 text-white">
             <div className="max-w-md bg-gray-800 rounded-lg mt-4 flex justify-between">
             <img src="../assets/click23.svg" alt="tasks" className="w-5 h-5 m-2" />
               <span className="text-gray-300 m-2" style={{fontSize:'10px'}}>1/25 Tasks Complete</span>

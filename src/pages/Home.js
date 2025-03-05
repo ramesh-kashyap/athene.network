@@ -134,7 +134,7 @@ const [dots, setDots] = useState([]);
     setTimeout(() => {
       setLoadingTasks((prev) => ({ ...prev, [taskId]: false }));
       setClaimableTasks((prev) => ({ ...prev, [taskId]: true }));
-    }, 5000);
+    }, 50000);
 
 
   };

@@ -15,8 +15,10 @@ const Mining = () => {
     setGemCount(gemCount + 1);
   };
 
-  const addCoin = () => {
-    const newCoin = { id: Date.now(), x: Math.random() * 200 - 150 }; // Unique ID & random position
+  const addCoin = (event) => {
+    const parent = event.currentTarget.getBoundingClientRect();
+    const { clientX, clientY } = event;
+    const newCoin = { id: Date.now(), x: clientX - parent.left,y: clientY - parent.top,}; // Unique ID & random position
     setCoins((prev) => [...prev, newCoin]);
 
     setTimeout(() => {
@@ -39,7 +41,7 @@ const Mining = () => {
       const response = await Api.post("auth/updateBalance", { balance: newBalance });
       // console.log(response.data);
       if(response.data.balance){
-        setBalance(response.data.balance + 1);
+        setBalance(response.data.balance);
       }      
     } catch (err) {
       console.error("Error updating balance:", err);
@@ -106,7 +108,7 @@ useEffect(() => {
           <span>{balance}</span>
         </div>
         <div className="flex gap-2 items-center bg-gray-800/50 px-4 py-3 rounded-lg" onClick={() => navigate("/tapairdrop")}>
-        <img src="../assets/klink27.svg" alt="coin" className="w-5 h-5" onClick={() => navigate("/tapairdrop")}/>
+        <img src="../assets/img/oksharp.png" alt="coin" className="w-5 h-5" onClick={() => navigate("/tapairdrop")}/>
           <span className="text-yellow-300">Bronze</span>
         </div>
         <div className="flex gap-2 items-center bg-gray-800/50 px-4 py-3 rounded-lg">
@@ -143,7 +145,12 @@ useEffect(() => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
             className="absolute text-yellow-400 text-xl font-bold"
-            style={{ left: `${50 + coin.x}%`, top: "50%" }}
+            style={{
+              left: `${coin.x}px`, // Exact X position
+              top: `${coin.y}px`,  // Exact Y position
+              transform: "translate(-50%, -50%)", // Center it properly
+              position: "absolute"
+            }}
           >
             +1🪙
           </motion.div>

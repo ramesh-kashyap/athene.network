@@ -3,9 +3,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import Footer from '../components/Footer';
 const leagues = [
-  { name: "Bronze League", progress: 11621, total: 500000, image: "../assets/klnik26.svg" },
-  { name: "Silver League", progress: 25000, total: 500000, image: "../assets/AiCoinX27.svg" },
-  { name: "Gold League", progress: 75000, total: 500000, image: "../assets/AiCoinX6.svg" }
+  { name: "Bronze League", progress: 11621, total: 500000, image: "../assets/img/oksharp.png" },
+  { name: "Silver League", progress: 25000, total: 500000, image: "../assets/img/oksharp.png" },
+  { name: "Gold League", progress: 75000, total: 500000, image: "../assets/img/oksharp.png" }
 ];
 
 const TapAirdrop = () => {
