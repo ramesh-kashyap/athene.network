@@ -121,11 +121,8 @@ const [dots, setDots] = useState([]);
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
   const [activeTab, setActiveTab] = useState("community");
-  const tasks = [
-    { id: 1, name: "Register AiCoinX Account", reward: "500,000", icon: "../assets/img/ok3d.png" },
-    { id: 2, name: "Learn More About AiCoinX", reward: "10,000", icon: "../assets/klink7.svg" },
-  ];
    const handleStart = async (taskId,taskUrl) => {
     // Change button text after 5 seconds
     window.open(taskUrl, "_blank");
@@ -156,6 +153,15 @@ const [dots, setDots] = useState([]);
         }, 5000);
       } catch (error) {
         console.error("Error fetching user info:", error);
+        if (error.response) {
+          const errorMessage = error.response.data.message || "An error occurred";
+          // console.log(error.response.data.message);
+          setPopupMessage(errorMessage);
+          setIsModalOpen(true);
+        } else {
+          setPopupMessage("Something went wrong. Please try again.");
+          setIsModalOpen(true)
+        }
       }
    
 
@@ -175,30 +181,11 @@ const [dots, setDots] = useState([]);
     
     <div className="w-full max-w-md flex justify-between items-center mb-6">
       <h1 className="text-2xl font-bold text-white">Register AiCoinX Account</h1>
-      <div className="relative" onClick={() => setIsModalOpen(true)}>
+      <div className="relative">
       <img src="../assets/klink4.svg" alt="Invite Friend" className="text-white w-6 h-6" />
         <span className="absolute top-0 right-0 bg-red-500 w-3 h-3 rounded-full"></span>
       </div>
-    </div>
-    
-    <div className="w-full max-w-md space-y-4">
-      {tasks.map(task => (
-        <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
-          <div className="flex items-center gap-3">
-            <img src={task.icon} alt={task.name} className="w-11 h-12" />
-            <div>
-              <p className="text-white font-bold">{task.name}</p>
-              <p className="text-gray-400 text-sm"> <img src="assets/oksharp.png" style={{width:'14px',display:'inline'}} />  {task.reward}</p>
-            </div>
-          </div>
-
-          <button className="bg-[#3A2F50] text-gray-300 px-4 py-2 rounded-lg">Start</button>
-       
-
-        </div>
-      ))}
-    </div>
-    
+    </div>    
     <div className="w-full max-w-md flex justify-between mt-6 border-b border-gray-700 pb-2 text-gray-400" style={{    width: "100%"}}>
       <button style={{width:'100%',margin:'auto'}} className={`relative text-white font-bold pb-2 ${activeTab === "community" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("community")}>Join Our Social Community <span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">9</span></button>
       {/* <button className={`relative text-white font-bold pb-2 ${activeTab === "socialtask" ? "border-b-2 border-purple-400" : ""}`} onClick={() => setActiveTab("socialtask")}>Social Task<span className="ml-2 bg-gray-700 px-2 py-1 rounded-full text-sm">12</span></button>
@@ -208,9 +195,7 @@ const [dots, setDots] = useState([]);
     </div>
     
     {activeTab === "community" && (
-      <div className="w-full max-w-md space-y-4 mt-4">
-
-        
+      <div className="w-full max-w-md space-y-4 mt-4">        
         {communityTasks.map(task => (
           <div key={task.id} className="bg-[#1C1A3A] p-2 rounded-xl flex items-center justify-between border border-gray-700">
             <div className="flex items-center gap-3">
@@ -256,10 +241,10 @@ const [dots, setDots] = useState([]);
             <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
           </div>
           <h2 className="text-2xl font-bold">Connected AiCoinX Wallet</h2>
-          <p className="text-gray-400 mt-2">Signup and connect your AiCoinX Wallet to start redeeming rewards directly to your account.</p>
+          <p className="text-gray-400 mt-2">{popupMessage}</p>
           <button
             className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
-            onClick={() => navigate('/signup')}
+            onClick={() => setIsModalOpen(false)}
           >
             Signup to AiCoinX
           </button>

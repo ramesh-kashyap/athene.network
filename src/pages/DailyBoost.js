@@ -10,12 +10,13 @@ import Api from '../Api/botService';
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("dailyBoost");
   const [faqOpen, setFaqOpen] = useState(false);
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
   const [dailyRewards, setDailyRewards] = useState([]);
   const [claimedRewards, setClaimedRewards] = useState([]);
   const [lastClaimedDay, setLastClaimedDay] = useState(null);
   const [firstClaimedDate, setFirstClaimedDate] = useState(null);
   const [eligibleRewardId, setEligibleRewardId] = useState(null);
+  const [modalMessage, setModalMessage] = useState("");
   const [connect, setConnected] = useState(false);
 //    useEffect =()=>{
 //    setIsModalOpen(true);
@@ -98,6 +99,7 @@ import Api from '../Api/botService';
         setLastClaimedDay(0);
       }
     } catch (error) {
+      console.log(response.data);
       console.error(error, '❌ Failed to fetch claim data');
     }
   };
@@ -105,23 +107,27 @@ import Api from '../Api/botService';
   
   const handleClaim = async (reward) => {
     if (reward.id !== eligibleRewardId) {
-      alert("❌ You must wait 24 hours before claiming the next reward!");
+      setModalMessage("❌ You must wait 24 hours before claiming the next reward!");
+      setIsModalOpen(true);
       return;
     }
   
     try {
-      const response = await Api.post('auth/claim-reward', { rewardId: reward.id });
-  
+      const response = await Api.post('auth/claim-reward', { rewardId: reward.id });      
       if (response?.data?.success) {
         setClaimedRewards([...claimedRewards, reward.id]);
         setIsModalOpen(true);
+        setModalMessage("🎉 Reward claimed successfully!");
         // alert("🎉 Reward claimed successfully!");
+        setIsModalOpen(true);
         Claimed(); // Refresh claim status
       } else {
-        throw new Error("Claim failed");
+        throw new Error(response.data.message || "Claim failed");
       }
     } catch (error) {
-      console.error("❌ Claiming reward failed:", error);
+      // console.error("❌ Claiming reward failed:", error);
+      setModalMessage(error.response?.data?.message || "❌ An error occurred while claiming the reward.");
+      setIsModalOpen(true);
     }
   };
   
@@ -197,7 +203,7 @@ import Api from '../Api/botService';
 
         {/* Mining Section */}
         {activeTab === "mining" && (
-          <div className="min-h-screen flex flex-col items-center p-6 text-white">
+          <div>
             <div className="max-w-md bg-gray-800 rounded-lg mt-4 flex justify-between">
             <img src="../assets/click23.svg" alt="tasks" className="w-5 h-5 m-2" />
               <span className="text-gray-300 m-2" style={{fontSize:'10px'}}>1/25 Tasks Complete</span>
@@ -256,26 +262,26 @@ import Api from '../Api/botService';
             </div>
           </div>
         )}
-        {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
-            <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
-              ✕
-            </button>
-            <div className="flex justify-center mb-4">
-              <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
+          {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">
+            <div className="bg-gray-900 rounded-xl p-6 w-full max-w-md text-center relative">
+              <button className="absolute top-4 right-4 text-gray-400 text-xl" onClick={() => setIsModalOpen(false)}>
+                ✕
+              </button>
+              <div className="flex justify-center mb-4">
+                <img src="../assets/img/oksharp.png" alt="Account Connected" className="w-24 h-24" />
+              </div>
+              <h2 className="text-2xl font-bold">Daily Reward</h2>
+              <p className="text-gray-400 mt-2">{modalMessage}</p>
+              <button
+                className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Claim
+              </button>
             </div>
-            <h2 className="text-2xl font-bold">Daily Reward</h2>
-            <p className="text-gray-400 mt-2">🎉 Reward claimed successfully!</p>
-            <button
-              className="w-full bg-purple-600 text-white text-lg font-bold py-3 rounded-lg mt-6 shadow-lg"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Claim
-            </button>
           </div>
-        </div>
-      )}
+        )}
         <Footer />
       </div>
     </>

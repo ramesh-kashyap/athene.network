@@ -8,6 +8,7 @@ const ActivityDashboard = () => {
   const [totalBalance, settotalBalance] = useState("");
   const [coinBalance, setcoinBalance] = useState("");
   const [connected, setConnected] = useState("");
+  const [totalAllCoins, settotalAllCoins] =useState("");
   useEffect(() => {
     fatchpoints();
   }, []);
@@ -20,6 +21,7 @@ const ActivityDashboard = () => {
        if(response.data){
         settotalBalance(response.data.coin_balance);
         setcoinBalance(response.data.coin);
+        settotalAllCoins(response.data.totalallCoin);
         if(!response.data.telegram_id){
           setConnected("❌ AiCoinX account is not connected")
         }
@@ -114,7 +116,7 @@ const ActivityDashboard = () => {
           <p className="text-gray-300 text-sm">Total AiCoinXers</p>
           <h2 className="text-3xl font-bold flex items-center justify-center gap-2">
             <img src="../assets/click20.svg" alt="referrals" className="w-8 h-8" />
-            0
+            {totalAllCoins}
           </h2>
         </div>
         <div className="text-center">

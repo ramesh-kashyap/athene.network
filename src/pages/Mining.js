@@ -11,11 +11,17 @@ const Mining = () => {
   const [gemCount, setGemCount] = useState(38);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dots, setDots] = useState([]);
+  const [isBlinking, setIsBlinking] = useState(false);
   const handleTap = () => {
     setGemCount(gemCount + 1);
   };
 
   const addCoin = (event) => {
+    setIsBlinking(true);
+    setTimeout(() => {
+      setIsBlinking(false);
+    }, 50);
+    
     const parent = event.currentTarget.getBoundingClientRect();
     const { clientX, clientY } = event;
     const newCoin = { id: Date.now(), x: clientX - parent.left,y: clientY - parent.top,}; // Unique ID & random position
@@ -135,7 +141,7 @@ useEffect(() => {
         </h1>
       </div>      
       <div className="relative flex justify-center" style={{marginTop:40}}>
-        <img src="../assets/img/oksharp.png" alt="tap" className="animate-pulse cursor-pointer" onClick={addCoin} style={{width:250, height:250}}/>
+        <img src="../assets/img/oksharp.png" alt="tap" className={`cursor-pointer ${isBlinking ? "animate-ping" : ""}`} onClick={addCoin} style={{width:250, height:250}}/>
         <AnimatePresence>
         {coins.map((coin) => (
           <motion.div
